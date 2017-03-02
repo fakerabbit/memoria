@@ -1,0 +1,369 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC7CDB6D1E67C7C30025FEFE /* Botdoh.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC7CDB6A1E67C7C30025FEFE /* Botdoh.otf */; };
+		AC7CDB6E1E67C7C30025FEFE /* Nexa Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC7CDB6B1E67C7C30025FEFE /* Nexa Bold.otf */; };
+		AC7CDB6F1E67C7C30025FEFE /* Nexa Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC7CDB6C1E67C7C30025FEFE /* Nexa Light.otf */; };
+		AC9CBB311E64E2F700C634F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CBB301E64E2F700C634F3 /* AppDelegate.swift */; };
+		AC9CBB391E64E2F800C634F3 /* Memoria.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC9CBB371E64E2F800C634F3 /* Memoria.xcdatamodeld */; };
+		AC9CBB3B1E64E2F800C634F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9CBB3A1E64E2F800C634F3 /* Assets.xcassets */; };
+		AC9CBB3E1E64E2F800C634F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9CBB3C1E64E2F800C634F3 /* LaunchScreen.storyboard */; };
+		AC9CBB4B1E64E4EA00C634F3 /* DataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CBB451E64E4EA00C634F3 /* DataMgr.swift */; };
+		AC9CBB4C1E64E4EA00C634F3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CBB461E64E4EA00C634F3 /* Utils.swift */; };
+		AC9CBB4D1E64E4EA00C634F3 /* MemoriaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CBB471E64E4EA00C634F3 /* MemoriaVC.swift */; };
+		AC9CBB4E1E64E4EA00C634F3 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CBB481E64E4EA00C634F3 /* NavController.swift */; };
+		AC9CBB4F1E64E4EA00C634F3 /* LearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CBB491E64E4EA00C634F3 /* LearnVC.swift */; };
+		AC9CBB501E64E4EA00C634F3 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CBB4A1E64E4EA00C634F3 /* LearnView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AC7CDB6A1E67C7C30025FEFE /* Botdoh.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Botdoh.otf; path = Assets/Fonts/Botdoh.otf; sourceTree = "<group>"; };
+		AC7CDB6B1E67C7C30025FEFE /* Nexa Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa Bold.otf"; path = "Assets/Fonts/Nexa Bold.otf"; sourceTree = "<group>"; };
+		AC7CDB6C1E67C7C30025FEFE /* Nexa Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa Light.otf"; path = "Assets/Fonts/Nexa Light.otf"; sourceTree = "<group>"; };
+		AC9CBB2D1E64E2F700C634F3 /* Memoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memoria.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC9CBB301E64E2F700C634F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AC9CBB381E64E2F800C634F3 /* Memoria.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Memoria.xcdatamodel; sourceTree = "<group>"; };
+		AC9CBB3A1E64E2F800C634F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC9CBB3D1E64E2F800C634F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC9CBB3F1E64E2F800C634F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC9CBB451E64E4EA00C634F3 /* DataMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMgr.swift; sourceTree = "<group>"; };
+		AC9CBB461E64E4EA00C634F3 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		AC9CBB471E64E4EA00C634F3 /* MemoriaVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoriaVC.swift; sourceTree = "<group>"; };
+		AC9CBB481E64E4EA00C634F3 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
+		AC9CBB491E64E4EA00C634F3 /* LearnVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnVC.swift; sourceTree = "<group>"; };
+		AC9CBB4A1E64E4EA00C634F3 /* LearnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC9CBB2A1E64E2F400C634F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC7CDB691E67C7B60025FEFE /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				AC7CDB6A1E67C7C30025FEFE /* Botdoh.otf */,
+				AC7CDB6B1E67C7C30025FEFE /* Nexa Bold.otf */,
+				AC7CDB6C1E67C7C30025FEFE /* Nexa Light.otf */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		AC7CDB701E67CC1A0025FEFE /* Learn Screen */ = {
+			isa = PBXGroup;
+			children = (
+				AC9CBB491E64E4EA00C634F3 /* LearnVC.swift */,
+				AC9CBB4A1E64E4EA00C634F3 /* LearnView.swift */,
+			);
+			name = "Learn Screen";
+			sourceTree = "<group>";
+		};
+		AC7CDB711E67CC340025FEFE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AC9CBB461E64E4EA00C634F3 /* Utils.swift */,
+				AC9CBB481E64E4EA00C634F3 /* NavController.swift */,
+				AC9CBB451E64E4EA00C634F3 /* DataMgr.swift */,
+				AC9CBB471E64E4EA00C634F3 /* MemoriaVC.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		AC9CBB241E64E2F400C634F3 = {
+			isa = PBXGroup;
+			children = (
+				AC9CBB2F1E64E2F700C634F3 /* Memoria */,
+				AC9CBB2E1E64E2F700C634F3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AC9CBB2E1E64E2F700C634F3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC9CBB2D1E64E2F700C634F3 /* Memoria.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC9CBB2F1E64E2F700C634F3 /* Memoria */ = {
+			isa = PBXGroup;
+			children = (
+				AC7CDB691E67C7B60025FEFE /* Assets */,
+				AC7CDB711E67CC340025FEFE /* Core */,
+				AC7CDB701E67CC1A0025FEFE /* Learn Screen */,
+				AC9CBB301E64E2F700C634F3 /* AppDelegate.swift */,
+				AC9CBB3A1E64E2F800C634F3 /* Assets.xcassets */,
+				AC9CBB3C1E64E2F800C634F3 /* LaunchScreen.storyboard */,
+				AC9CBB3F1E64E2F800C634F3 /* Info.plist */,
+				AC9CBB371E64E2F800C634F3 /* Memoria.xcdatamodeld */,
+			);
+			path = Memoria;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC9CBB2C1E64E2F400C634F3 /* Memoria */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC9CBB421E64E2F800C634F3 /* Build configuration list for PBXNativeTarget "Memoria" */;
+			buildPhases = (
+				AC9CBB291E64E2F400C634F3 /* Sources */,
+				AC9CBB2A1E64E2F400C634F3 /* Frameworks */,
+				AC9CBB2B1E64E2F400C634F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Memoria;
+			productName = Memoria;
+			productReference = AC9CBB2D1E64E2F700C634F3 /* Memoria.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC9CBB251E64E2F400C634F3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = MM;
+				TargetAttributes = {
+					AC9CBB2C1E64E2F400C634F3 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 788WMGHEL8;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AC9CBB281E64E2F400C634F3 /* Build configuration list for PBXProject "Memoria" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC9CBB241E64E2F400C634F3;
+			productRefGroup = AC9CBB2E1E64E2F700C634F3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC9CBB2C1E64E2F400C634F3 /* Memoria */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC9CBB2B1E64E2F400C634F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC7CDB6F1E67C7C30025FEFE /* Nexa Light.otf in Resources */,
+				AC7CDB6D1E67C7C30025FEFE /* Botdoh.otf in Resources */,
+				AC7CDB6E1E67C7C30025FEFE /* Nexa Bold.otf in Resources */,
+				AC9CBB3E1E64E2F800C634F3 /* LaunchScreen.storyboard in Resources */,
+				AC9CBB3B1E64E2F800C634F3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC9CBB291E64E2F400C634F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC9CBB4C1E64E4EA00C634F3 /* Utils.swift in Sources */,
+				AC9CBB4E1E64E4EA00C634F3 /* NavController.swift in Sources */,
+				AC9CBB4B1E64E4EA00C634F3 /* DataMgr.swift in Sources */,
+				AC9CBB4D1E64E4EA00C634F3 /* MemoriaVC.swift in Sources */,
+				AC9CBB4F1E64E4EA00C634F3 /* LearnVC.swift in Sources */,
+				AC9CBB391E64E2F800C634F3 /* Memoria.xcdatamodeld in Sources */,
+				AC9CBB311E64E2F700C634F3 /* AppDelegate.swift in Sources */,
+				AC9CBB501E64E4EA00C634F3 /* LearnView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AC9CBB3C1E64E2F800C634F3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC9CBB3D1E64E2F800C634F3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC9CBB401E64E2F800C634F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AC9CBB411E64E2F800C634F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC9CBB431E64E2F800C634F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 788WMGHEL8;
+				INFOPLIST_FILE = Memoria/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Memoria;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AC9CBB441E64E2F800C634F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 788WMGHEL8;
+				INFOPLIST_FILE = Memoria/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Memoria;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC9CBB281E64E2F400C634F3 /* Build configuration list for PBXProject "Memoria" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC9CBB401E64E2F800C634F3 /* Debug */,
+				AC9CBB411E64E2F800C634F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC9CBB421E64E2F800C634F3 /* Build configuration list for PBXNativeTarget "Memoria" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC9CBB431E64E2F800C634F3 /* Debug */,
+				AC9CBB441E64E2F800C634F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AC9CBB371E64E2F800C634F3 /* Memoria.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AC9CBB381E64E2F800C634F3 /* Memoria.xcdatamodel */,
+			);
+			currentVersion = AC9CBB381E64E2F800C634F3 /* Memoria.xcdatamodel */;
+			path = Memoria.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AC9CBB251E64E2F400C634F3 /* Project object */;
+}
