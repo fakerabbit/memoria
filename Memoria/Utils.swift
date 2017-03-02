@@ -114,4 +114,12 @@ struct Utils {
     static var menuItemWidth = "200"
     static var galleryItemHeight = "200"
     static var galleryItemWidth = "200"
+    
+    /*
+     * MARK:- UTILS
+     */
+    
+    static func randomBetweenNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat{
+        return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
+    }
 }
