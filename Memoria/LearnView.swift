@@ -14,6 +14,9 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
     typealias LearnViewOnTouch = (Category) -> Void
     var onCell: LearnViewOnTouch = { category in }
     
+    typealias LearnViewOnAdd = (LearnView) -> Void
+    var onAdd: LearnViewOnAdd = { view in }
+    
     lazy var gradientLayer: CAGradientLayer! = {
         let view = CAGradientLayer()
         view.frame = CGRect.zero
@@ -54,6 +57,12 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         lbl.sizeToFit()
         return lbl
     }()
+    private lazy var addBtn: CircleBtn! = {
+       let btn = CircleBtn(frame: CGRect.zero)
+        btn.title = "+"
+        btn.addTarget(self, action: #selector(onAdd(_:)), for: .touchUpInside)
+        return btn
+    }()
     
     /*
      * MARK:- Init
@@ -66,20 +75,24 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         self.layer.addSublayer(gradientLayer)
         self.addSubview(collectionView)
         self.addSubview(titleLbl)
+        self.addSubview(addBtn)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK:- Layout
     override func layoutSubviews() {
         super.layoutSubviews()
         let w = self.frame.size.width
         let h = self.frame.size.height
         let pad: CGFloat = 100
+        let btnS: CGFloat = 70
         gradientLayer.frame = self.bounds
         collectionView.frame = CGRect(x: 0, y: pad, width: w, height: h - pad)
         titleLbl.frame = CGRect(x: 10, y: pad - titleLbl.frame.size.height, width: titleLbl.frame.size.width, height: titleLbl.frame.size.height)
+        addBtn.frame = CGRect(x: w/2 - btnS/2, y: h - (btnS + 10), width: btnS, height: btnS)
     }
     
     /*
@@ -135,6 +148,12 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         }
         
         return size
+    }
+    
+    // MARK:- Private
+    
+    func onAdd(_ sender : UIButton) {
+        self.onAdd(self)
     }
     
     // MARK:- Animations

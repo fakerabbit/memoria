@@ -79,7 +79,7 @@ class LearnCell: UICollectionViewCell {
         self.textView.textColor = Utils.cardColor()
         self.textView.layer.borderColor = Utils.cardColor().cgColor
         
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { [weak self] (timer) in
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { [weak self] (timer) in
             
             self?.textView.textColor = Utils.creamColor()
             self?.textView.layer.borderColor = Utils.creamColor().cgColor

@@ -34,6 +34,9 @@ class LearnVC: MemoriaVC {
         learnView.onCell = { category in
             debugPrint("category: \(category)")
         }
+        learnView.onAdd = { view in
+            debugPrint("add...")
+        }
     }
     
     override func didReceiveMemoryWarning() {
