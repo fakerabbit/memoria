@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CreateCardView: UIView, UITextFieldDelegate {
+class CreateCardView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     typealias CreateCardViewOnClose = (CreateCardView) -> Void
     var onClose: CreateCardViewOnClose = { view in }
@@ -34,6 +34,7 @@ class CreateCardView: UIView, UITextFieldDelegate {
        let c = CreateCard(frame: CGRect.zero)
         c.qTfld.delegate = self
         c.aTfld.delegate = self
+        c.catBtn.addTarget(self, action: #selector(onCategory(_:)), for: .touchUpInside)
         return c
     }()
     
@@ -44,8 +45,18 @@ class CreateCardView: UIView, UITextFieldDelegate {
         return view
     }()
     
+    private lazy var picker: UIPickerView! = {
+        let pick = UIPickerView(frame: CGRect.zero)
+        pick.delegate = self
+        pick.dataSource = self
+        pick.isHidden = true
+        pick.isUserInteractionEnabled = false
+        return pick
+    }()
+    
     private var lastColors: [CGColor]!
     private let btnS: CGFloat = 50.0
+    private var categories: [Category?] = []
     
     /*
      * MARK:- Init
@@ -57,6 +68,13 @@ class CreateCardView: UIView, UITextFieldDelegate {
         self.addSubview(titleLbl)
         self.addSubview(card)
         self.addSubview(closeBtn)
+        self.addSubview(picker)
+        
+        DataMgr.sharedInstance.fetchCreateCategories() { categories in
+            self.categories = categories
+            let cat: Category = Category(name: "Add new category", width: 0)
+            self.categories.append(cat)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -74,12 +92,22 @@ class CreateCardView: UIView, UITextFieldDelegate {
         card.frame = CGRect(x: pad, y: padY, width: w - pad * 2, height: h - padY/2)
         closeBtn.frame = CGRect(x: w - (pad + btnS), y: padY - btnS, width: btnS, height: btnS)
         titleLbl.frame = CGRect(x: pad, y: padY - (titleLbl.frame.size.height + 15), width: titleLbl.frame.size.width, height: titleLbl.frame.size.height + 5)
+        picker.frame = CGRect(x: pad, y: h - picker.frame.size.height, width: w - pad * 2, height: picker.frame.size.height)
     }
     
     // MARK:- Private
     
+    func showPicker(show: Bool) {
+        picker.isHidden = show == false
+        picker.isUserInteractionEnabled = show == true
+    }
+    
     func onClose(_ sender : UIButton) {
         self.onClose(self)
+    }
+    
+    func onCategory(_ sender : UIButton) {
+        self.showPicker(show: picker.isHidden)
     }
     
     // MARK:- UITextFieldDelegate methods
@@ -90,6 +118,26 @@ class CreateCardView: UIView, UITextFieldDelegate {
             card.aTfld.becomeFirstResponder()
         }
         return true
+    }
+    
+    // MARK:- UIPickerView methods
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categories.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let cat: Category = categories[row]!
+        return cat.name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        debugPrint("selected: \(categories[row]!.name)")
+        self.showPicker(show: false)
     }
     
     // MARK:- Animations

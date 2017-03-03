@@ -17,6 +17,8 @@ class CreateCardVC: UIViewController {
         return v
     }()
     
+    // MARK:- View methods
+    
     override func loadView() {
         super.loadView()
         self.view = self.createView
