@@ -17,6 +17,7 @@
 		AC34D5C41E68B4DB00120C62 /* RoundTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34D5C31E68B4DB00120C62 /* RoundTextView.swift */; };
 		AC34D5C61E68E61300120C62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34D5C51E68E61300120C62 /* Extensions.swift */; };
 		AC5692D71E691A6E004EFC73 /* CircleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5692D61E691A6E004EFC73 /* CircleBtn.swift */; };
+		AC7869551E6A1E44000087C5 /* SelectBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7869541E6A1E44000087C5 /* SelectBtn.swift */; };
 		AC7CDB6D1E67C7C30025FEFE /* Botdoh.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC7CDB6A1E67C7C30025FEFE /* Botdoh.otf */; };
 		AC7CDB6E1E67C7C30025FEFE /* Nexa Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC7CDB6B1E67C7C30025FEFE /* Nexa Bold.otf */; };
 		AC7CDB6F1E67C7C30025FEFE /* Nexa Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC7CDB6C1E67C7C30025FEFE /* Nexa Light.otf */; };
@@ -43,6 +44,7 @@
 		AC34D5C31E68B4DB00120C62 /* RoundTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTextView.swift; sourceTree = "<group>"; };
 		AC34D5C51E68E61300120C62 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AC5692D61E691A6E004EFC73 /* CircleBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleBtn.swift; sourceTree = "<group>"; };
+		AC7869541E6A1E44000087C5 /* SelectBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectBtn.swift; sourceTree = "<group>"; };
 		AC7CDB6A1E67C7C30025FEFE /* Botdoh.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Botdoh.otf; path = Assets/Fonts/Botdoh.otf; sourceTree = "<group>"; };
 		AC7CDB6B1E67C7C30025FEFE /* Nexa Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa Bold.otf"; path = "Assets/Fonts/Nexa Bold.otf"; sourceTree = "<group>"; };
 		AC7CDB6C1E67C7C30025FEFE /* Nexa Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa Light.otf"; path = "Assets/Fonts/Nexa Light.otf"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				AC25663F1E69E5910056895D /* CircleTextView.swift */,
 				AC2566481E6A0AD40056895D /* PlainBtn.swift */,
 				AC25664A1E6A12F20056895D /* LineTextField.swift */,
+				AC7869541E6A1E44000087C5 /* SelectBtn.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				AC25664B1E6A12F20056895D /* LineTextField.swift in Sources */,
 				AC9CBB4E1E64E4EA00C634F3 /* NavController.swift in Sources */,
 				AC9CBB4B1E64E4EA00C634F3 /* DataMgr.swift in Sources */,
+				AC7869551E6A1E44000087C5 /* SelectBtn.swift in Sources */,
 				AC9CBB4D1E64E4EA00C634F3 /* MemoriaVC.swift in Sources */,
 				AC5692D71E691A6E004EFC73 /* CircleBtn.swift in Sources */,
 				AC2566401E69E5910056895D /* CircleTextView.swift in Sources */,

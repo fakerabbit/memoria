@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CreateCardView: UIView {
+class CreateCardView: UIView, UITextFieldDelegate {
     
     typealias CreateCardViewOnClose = (CreateCardView) -> Void
     var onClose: CreateCardViewOnClose = { view in }
@@ -32,6 +32,8 @@ class CreateCardView: UIView {
     
     lazy var card: CreateCard! = {
        let c = CreateCard(frame: CGRect.zero)
+        c.qTfld.delegate = self
+        c.aTfld.delegate = self
         return c
     }()
     
@@ -71,13 +73,23 @@ class CreateCardView: UIView {
         gradientLayer.frame = self.bounds
         card.frame = CGRect(x: pad, y: padY, width: w - pad * 2, height: h - padY/2)
         closeBtn.frame = CGRect(x: w - (pad + btnS), y: padY - btnS, width: btnS, height: btnS)
-        titleLbl.frame = CGRect(x: pad, y: padY - (titleLbl.frame.size.height + 10), width: titleLbl.frame.size.width, height: titleLbl.frame.size.height)
+        titleLbl.frame = CGRect(x: pad, y: padY - (titleLbl.frame.size.height + 15), width: titleLbl.frame.size.width, height: titleLbl.frame.size.height + 5)
     }
     
     // MARK:- Private
     
     func onClose(_ sender : UIButton) {
         self.onClose(self)
+    }
+    
+    // MARK:- UITextFieldDelegate methods
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField.tag == 1 {
+            card.aTfld.becomeFirstResponder()
+        }
+        return true
     }
     
     // MARK:- Animations

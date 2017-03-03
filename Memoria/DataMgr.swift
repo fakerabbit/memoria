@@ -31,6 +31,7 @@ class DataMgr {
     
     typealias CardMgrCallback = (Card?) -> Void
     typealias CategoryMgrCallback = ([Category?]) -> Void
+    typealias FristCategoryMgrCallback = (Category) -> Void
      
      // MARK: - Core Data stack
     
@@ -57,6 +58,50 @@ class DataMgr {
         catch let error {
             debugPrint("error fetching categories: \(error.localizedDescription)")
             callback(categories)
+        }
+    }
+    
+    func fetchCreateCategories(callback: @escaping CategoryMgrCallback) {
+        
+        var categories:[Category] = []
+        let request:NSFetchRequest<ECategory> = ECategory.fetchRequest()
+        var results:[ECategory]?
+        
+        do {
+            results = try self.managedObjectContext.fetch(request)
+            for cat: ECategory in results! {
+                let category: Category = Category(name: cat.name, width: 0)
+                categories.append(category)
+            }
+            if categories.count == 0 {
+                let info = Category(name: "Default", width: 0)
+                categories.append(info)
+            }
+            callback(categories)
+        }
+        catch let error {
+            debugPrint("error fetching categories: \(error.localizedDescription)")
+            callback(categories)
+        }
+    }
+    
+    func fetchFirstCategory(callback: @escaping FristCategoryMgrCallback) {
+        
+        var category:Category = Category(name: "Default", width: 0)
+        let request:NSFetchRequest<ECategory> = ECategory.fetchRequest()
+        var results:[ECategory]?
+        
+        do {
+            results = try self.managedObjectContext.fetch(request)
+            if results!.count > 0 {
+                let cat: ECategory = results!.first!
+                category = Category(name: cat.name, width: 0)
+            }
+            callback(category)
+        }
+        catch let error {
+            debugPrint("error fetching categories: \(error.localizedDescription)")
+            callback(category)
         }
     }
      
