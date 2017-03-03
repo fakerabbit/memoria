@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC2566401E69E5910056895D /* CircleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25663F1E69E5910056895D /* CircleTextView.swift */; };
+		AC2566431E6A066C0056895D /* CreateCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2566421E6A066C0056895D /* CreateCardVC.swift */; };
+		AC2566451E6A06760056895D /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2566441E6A06760056895D /* CreateCardView.swift */; };
+		AC2566471E6A07F10056895D /* CreateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2566461E6A07F10056895D /* CreateCard.swift */; };
+		AC2566491E6A0AD40056895D /* PlainBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2566481E6A0AD40056895D /* PlainBtn.swift */; };
 		AC34D5C21E68AEFB00120C62 /* LearnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34D5C11E68AEFB00120C62 /* LearnCell.swift */; };
 		AC34D5C41E68B4DB00120C62 /* RoundTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34D5C31E68B4DB00120C62 /* RoundTextView.swift */; };
 		AC34D5C61E68E61300120C62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34D5C51E68E61300120C62 /* Extensions.swift */; };
@@ -27,6 +32,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC25663F1E69E5910056895D /* CircleTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTextView.swift; sourceTree = "<group>"; };
+		AC2566421E6A066C0056895D /* CreateCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardVC.swift; sourceTree = "<group>"; };
+		AC2566441E6A06760056895D /* CreateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
+		AC2566461E6A07F10056895D /* CreateCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCard.swift; sourceTree = "<group>"; };
+		AC2566481E6A0AD40056895D /* PlainBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlainBtn.swift; sourceTree = "<group>"; };
 		AC34D5C11E68AEFB00120C62 /* LearnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnCell.swift; sourceTree = "<group>"; };
 		AC34D5C31E68B4DB00120C62 /* RoundTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTextView.swift; sourceTree = "<group>"; };
 		AC34D5C51E68E61300120C62 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -59,6 +69,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC2566411E6A064F0056895D /* Create Card */ = {
+			isa = PBXGroup;
+			children = (
+				AC2566421E6A066C0056895D /* CreateCardVC.swift */,
+				AC2566441E6A06760056895D /* CreateCardView.swift */,
+				AC2566461E6A07F10056895D /* CreateCard.swift */,
+			);
+			name = "Create Card";
+			sourceTree = "<group>";
+		};
 		AC7CDB691E67C7B60025FEFE /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +109,8 @@
 				AC34D5C31E68B4DB00120C62 /* RoundTextView.swift */,
 				AC34D5C51E68E61300120C62 /* Extensions.swift */,
 				AC5692D61E691A6E004EFC73 /* CircleBtn.swift */,
+				AC25663F1E69E5910056895D /* CircleTextView.swift */,
+				AC2566481E6A0AD40056895D /* PlainBtn.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -114,6 +136,7 @@
 			children = (
 				AC7CDB691E67C7B60025FEFE /* Assets */,
 				AC7CDB711E67CC340025FEFE /* Core */,
+				AC2566411E6A064F0056895D /* Create Card */,
 				AC7CDB701E67CC1A0025FEFE /* Learn Screen */,
 				AC9CBB301E64E2F700C634F3 /* AppDelegate.swift */,
 				AC9CBB3A1E64E2F800C634F3 /* Assets.xcassets */,
@@ -204,13 +227,18 @@
 				AC9CBB4B1E64E4EA00C634F3 /* DataMgr.swift in Sources */,
 				AC9CBB4D1E64E4EA00C634F3 /* MemoriaVC.swift in Sources */,
 				AC5692D71E691A6E004EFC73 /* CircleBtn.swift in Sources */,
+				AC2566401E69E5910056895D /* CircleTextView.swift in Sources */,
 				AC9CBB4F1E64E4EA00C634F3 /* LearnVC.swift in Sources */,
 				AC34D5C21E68AEFB00120C62 /* LearnCell.swift in Sources */,
+				AC2566431E6A066C0056895D /* CreateCardVC.swift in Sources */,
+				AC2566471E6A07F10056895D /* CreateCard.swift in Sources */,
 				AC34D5C41E68B4DB00120C62 /* RoundTextView.swift in Sources */,
 				AC9CBB391E64E2F800C634F3 /* Memoria.xcdatamodeld in Sources */,
+				AC2566451E6A06760056895D /* CreateCardView.swift in Sources */,
 				AC9CBB311E64E2F700C634F3 /* AppDelegate.swift in Sources */,
 				AC34D5C61E68E61300120C62 /* Extensions.swift in Sources */,
 				AC9CBB501E64E4EA00C634F3 /* LearnView.swift in Sources */,
+				AC2566491E6A0AD40056895D /* PlainBtn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +351,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 788WMGHEL8;
 				INFOPLIST_FILE = Memoria/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -336,6 +365,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 788WMGHEL8;
 				INFOPLIST_FILE = Memoria/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

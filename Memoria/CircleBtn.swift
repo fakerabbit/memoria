@@ -23,6 +23,8 @@ class CircleBtn: UIButton {
        let lbl = UILabel(frame: CGRect.zero)
         lbl.font = Utils.buttonFont()
         lbl.textColor = Utils.darkColor()
+        lbl.shadowColor = Utils.cardColor()
+        lbl.shadowOffset = CGSize(width: 0.7, height: 0.7)
         return lbl
     }()
     
@@ -30,7 +32,7 @@ class CircleBtn: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
-        self.layer.shadowOpacity = 0.7
+        self.layer.shadowOpacity = 1.0
         self.layer.shadowColor = Utils.cardColor().cgColor
         self.addSubview(titleLbl)
     }
@@ -55,8 +57,8 @@ class CircleBtn: UIButton {
         super.layoutSubviews()
         let w = self.frame.size.width
         let h = self.frame.size.height
-        self.layer.cornerRadius = w/2;
-        self.layer.shadowRadius = w/2;
+        self.layer.cornerRadius = w/2
+        self.layer.shadowRadius = w/5.5
         titleLbl.frame = CGRect(x: w/2 - titleLbl.frame.size.width/2, y: h/2 - titleLbl.frame.size.height/2 + 5, width: titleLbl.frame.size.width, height: titleLbl.frame.size.height)
     }
 }

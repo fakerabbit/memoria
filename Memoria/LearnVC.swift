@@ -34,8 +34,10 @@ class LearnVC: MemoriaVC {
         learnView.onCell = { category in
             debugPrint("category: \(category)")
         }
-        learnView.onAdd = { view in
-            debugPrint("add...")
+        learnView.onAdd = { [weak self] view in
+            
+            let vc = CreateCardVC()
+            self?.present(vc, animated: true, completion: nil)
         }
     }
     

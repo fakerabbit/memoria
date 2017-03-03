@@ -48,7 +48,7 @@ class DataMgr {
             }
             if categories.count == 0 {
                 let info = Category(name: "No cards have been created yet...", width: 0)
-                let add = Category(name: "Click + button below to add one...", width: 0)
+                let add = Category(name: "Click + button to add one...", width: 0)
                 categories.append(info)
                 categories.append(add)
             }

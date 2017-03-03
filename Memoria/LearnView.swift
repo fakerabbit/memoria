@@ -17,13 +17,6 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
     typealias LearnViewOnAdd = (LearnView) -> Void
     var onAdd: LearnViewOnAdd = { view in }
     
-    lazy var gradientLayer: CAGradientLayer! = {
-        let view = CAGradientLayer()
-        view.frame = CGRect.zero
-        view.colors = self.lastColors
-        return view
-    }()
-    
     lazy var collectionView: UICollectionView! = {
         let frame = self.frame
         let layout = UICollectionViewFlowLayout()
@@ -49,14 +42,23 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     private var lastColors: [CGColor]!
+    
+    private lazy var gradientLayer: CAGradientLayer! = {
+        let view = CAGradientLayer()
+        view.frame = CGRect.zero
+        view.colors = self.lastColors
+        return view
+    }()
+    
     private lazy var titleLbl: UILabel! = {
         let lbl = UILabel(frame: CGRect.zero)
         lbl.font = Utils.logoFont()
         lbl.textColor = Utils.textColor()
-        lbl.text = "Memoria"
+        lbl.text = "Memoria . . ."
         lbl.sizeToFit()
         return lbl
     }()
+    
     private lazy var addBtn: CircleBtn! = {
        let btn = CircleBtn(frame: CGRect.zero)
         btn.title = "+"
@@ -141,9 +143,10 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
                 else {
                     size.width = size.height
                 }
-                category?.width = size.width
+                category?.width = size.width + 5
                 categories[indexPath.row] = category!
                 size.width = collectionView.frame.size.width - pad
+                size.height += 5
             }
         }
         
@@ -164,7 +167,7 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func backgroundAnim() {
-        let timer = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true) { [weak self] (timer) in
+        let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] (timer) in
             
             let fromColors = self?.lastColors
             let colors = self?.randomColors()
@@ -173,7 +176,7 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
             let animation : CABasicAnimation = CABasicAnimation(keyPath: "colors")
             animation.fromValue = fromColors
             animation.toValue = colors
-            animation.duration = 4.0
+            animation.duration = 2.0
             animation.isRemovedOnCompletion = true
             animation.fillMode = kCAFillModeForwards
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)

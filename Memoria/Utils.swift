@@ -53,6 +53,10 @@ struct Utils {
         return UIFont(name: "NexaBold", size: 50.0)!
     }
     
+    static func buttonSmallFont() -> UIFont {
+        return UIFont(name: "NexaLight", size: 25.0)!
+    }
+    
     /*
      * MARK:- COLORS
      */
