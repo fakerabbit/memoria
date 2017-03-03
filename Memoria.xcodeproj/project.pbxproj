@@ -12,6 +12,7 @@
 		AC2566451E6A06760056895D /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2566441E6A06760056895D /* CreateCardView.swift */; };
 		AC2566471E6A07F10056895D /* CreateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2566461E6A07F10056895D /* CreateCard.swift */; };
 		AC2566491E6A0AD40056895D /* PlainBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2566481E6A0AD40056895D /* PlainBtn.swift */; };
+		AC25664B1E6A12F20056895D /* LineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25664A1E6A12F20056895D /* LineTextField.swift */; };
 		AC34D5C21E68AEFB00120C62 /* LearnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34D5C11E68AEFB00120C62 /* LearnCell.swift */; };
 		AC34D5C41E68B4DB00120C62 /* RoundTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34D5C31E68B4DB00120C62 /* RoundTextView.swift */; };
 		AC34D5C61E68E61300120C62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34D5C51E68E61300120C62 /* Extensions.swift */; };
@@ -37,6 +38,7 @@
 		AC2566441E6A06760056895D /* CreateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
 		AC2566461E6A07F10056895D /* CreateCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCard.swift; sourceTree = "<group>"; };
 		AC2566481E6A0AD40056895D /* PlainBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlainBtn.swift; sourceTree = "<group>"; };
+		AC25664A1E6A12F20056895D /* LineTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTextField.swift; sourceTree = "<group>"; };
 		AC34D5C11E68AEFB00120C62 /* LearnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnCell.swift; sourceTree = "<group>"; };
 		AC34D5C31E68B4DB00120C62 /* RoundTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTextView.swift; sourceTree = "<group>"; };
 		AC34D5C51E68E61300120C62 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				AC5692D61E691A6E004EFC73 /* CircleBtn.swift */,
 				AC25663F1E69E5910056895D /* CircleTextView.swift */,
 				AC2566481E6A0AD40056895D /* PlainBtn.swift */,
+				AC25664A1E6A12F20056895D /* LineTextField.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC9CBB4C1E64E4EA00C634F3 /* Utils.swift in Sources */,
+				AC25664B1E6A12F20056895D /* LineTextField.swift in Sources */,
 				AC9CBB4E1E64E4EA00C634F3 /* NavController.swift in Sources */,
 				AC9CBB4B1E64E4EA00C634F3 /* DataMgr.swift in Sources */,
 				AC9CBB4D1E64E4EA00C634F3 /* MemoriaVC.swift in Sources */,

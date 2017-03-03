@@ -29,6 +29,7 @@ class CreateCardVC: UIViewController {
         createView.onClose = { [weak self] view in
             self?.dismiss(animated: true, completion: nil)
         }
+        createView.card.qTfld.becomeFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {

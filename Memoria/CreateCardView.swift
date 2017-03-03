@@ -30,7 +30,7 @@ class CreateCardView: UIView {
         return b
     }()
     
-    private lazy var card: CreateCard! = {
+    lazy var card: CreateCard! = {
        let c = CreateCard(frame: CGRect.zero)
         return c
     }()

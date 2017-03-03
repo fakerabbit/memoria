@@ -28,7 +28,7 @@ class CircleTextView: UIView {
      */
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.1)
         self.layer.masksToBounds = true;
         self.layer.borderWidth = 1
         self.layer.borderColor = Utils.textColor().cgColor
