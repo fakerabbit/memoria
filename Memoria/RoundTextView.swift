@@ -20,7 +20,7 @@ class RoundTextView: UITextView {
     convenience init(frame: CGRect) {
         self.init(frame: frame, textContainer: nil)
         self.backgroundColor = UIColor.clear
-        self.textColor = Utils.orangeColor()
+        self.textColor = Utils.creamColor()
         self.font = Utils.mainFont()
         self.isScrollEnabled = false
         self.textAlignment = .center
@@ -28,7 +28,7 @@ class RoundTextView: UITextView {
         self.textContainerInset = UIEdgeInsets(top: kRoundTextInset, left: kRoundTextInset, bottom: kRoundTextInset, right: kRoundTextInset)
         self.layer.masksToBounds = false;
         self.layer.borderWidth = 1
-        self.layer.borderColor = Utils.orangeColor().cgColor
+        self.layer.borderColor = Utils.creamColor().cgColor
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,6 +38,9 @@ class RoundTextView: UITextView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layer.cornerRadius = self.frame.size.width/2;
-        self.textContainerInset = UIEdgeInsets(top: self.frame.size.height/2.5, left: 0, bottom: 0, right: 0)
+        var inset = round(self.contentSize.height/(self.font?.lineHeight)!)
+        //debugPrint("inset: \(inset)")
+        inset /= 2
+        self.textContainerInset = UIEdgeInsets(top: self.frame.size.height/inset, left: 0, bottom: 0, right: 0)
     }
 }

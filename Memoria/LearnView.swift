@@ -11,6 +11,9 @@ import UIKit
 
 class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    typealias LearnViewOnTouch = (Category) -> Void
+    var onCell: LearnViewOnTouch = { category in }
+    
     lazy var gradientLayer: CAGradientLayer! = {
         let view = CAGradientLayer()
         view.frame = CGRect.zero
@@ -32,7 +35,7 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         return cv
     }()
     
-    var categories: [Category]! {
+    var categories: [Category?]! {
         didSet {
             if categories == nil || categories.count == 0 {
                 debugPrint("WARNING categories is null")
@@ -43,6 +46,14 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     private var lastColors: [CGColor]!
+    private lazy var titleLbl: UILabel! = {
+        let lbl = UILabel(frame: CGRect.zero)
+        lbl.font = Utils.logoFont()
+        lbl.textColor = Utils.textColor()
+        lbl.text = "Memoria"
+        lbl.sizeToFit()
+        return lbl
+    }()
     
     /*
      * MARK:- Init
@@ -54,6 +65,7 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         self.lastColors = self.randomColors()
         self.layer.addSublayer(gradientLayer)
         self.addSubview(collectionView)
+        self.addSubview(titleLbl)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,6 +79,7 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         let pad: CGFloat = 100
         gradientLayer.frame = self.bounds
         collectionView.frame = CGRect(x: 0, y: pad, width: w, height: h - pad)
+        titleLbl.frame = CGRect(x: 10, y: pad - titleLbl.frame.size.height, width: titleLbl.frame.size.width, height: titleLbl.frame.size.height)
     }
     
     /*
@@ -87,8 +100,13 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         let category = self.categories[indexPath.row]
         
         let cell:LearnCell = collectionView.dequeueReusableCell(withReuseIdentifier: "learnCell", for: indexPath) as! LearnCell
-        cell.text = category.name
-        cell.cellWidth = category.width
+        cell.text = category?.name
+        cell.cellWidth = category?.width
+        cell.category = category
+        
+        cell.onTouch = { [weak self] category in
+            self?.onCell(category)
+        }
         
         return cell
     }

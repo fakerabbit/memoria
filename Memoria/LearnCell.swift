@@ -11,6 +11,9 @@ import UIKit
 
 class LearnCell: UICollectionViewCell {
     
+    typealias LearnCellOnTouch = (Category) -> Void
+    var onTouch: LearnCellOnTouch = { category in }
+    
     var text:String! {
         didSet {
             //debugPrint("text didSet: ", text)
@@ -32,13 +35,23 @@ class LearnCell: UICollectionViewCell {
         }
     }
     
+    var category: Category!
+    
     private let textView: RoundTextView = RoundTextView(frame: CGRect.zero)
+    internal lazy var button:UIButton! = {
+        let b = UIButton(type: .custom)
+        b.addTarget(self, action: #selector(onTouchDown(_:)), for: .touchDown)
+        b.addTarget(self, action: #selector(onTouchUp(_:)), for: .touchUpInside)
+        b.addTarget(self, action: #selector(onTouchUp(_:)), for: .touchDragExit)
+        return b
+    }()
     
     // MARK:- Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         //self.contentView.backgroundColor = UIColor.red
         self.contentView.addSubview(textView)
+        self.contentView.addSubview(button)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,5 +65,26 @@ class LearnCell: UICollectionViewCell {
         let h:CGFloat = self.frame.size.height
         let x:CGFloat = Utils.randomBetweenNumbers(firstNum: 0, secondNum: w - cellWidth)
         textView.frame = CGRect(x: x, y: 0, width: cellWidth, height: h)
+        button.frame = textView.frame
+    }
+    
+    // MARK:- Private
+    
+    func onTouchDown(_ sender : UIButton) {
+        self.textView.textColor = Utils.cardColor()
+        self.textView.layer.borderColor = Utils.cardColor().cgColor
+    }
+    
+    func onTouchUp(_ sender : UIButton) {
+        self.textView.textColor = Utils.cardColor()
+        self.textView.layer.borderColor = Utils.cardColor().cgColor
+        
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { [weak self] (timer) in
+            
+            self?.textView.textColor = Utils.creamColor()
+            self?.textView.layer.borderColor = Utils.creamColor().cgColor
+            self?.onTouch((self?.category)!)
+        }
+        RunLoop.current.add(timer, forMode: .commonModes)
     }
 }

@@ -26,11 +26,14 @@ class LearnVC: MemoriaVC {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //Utils.printFontNamesInSystem()
-        learnView.categories = [
-            Category(name: "Some sample category", width: 0),
-            Category(name: "Default", width: 0)
-        ]
+        DataMgr.sharedInstance.fetchCategories() { categories in
+            
+            self.learnView.categories = categories
+        }
         learnView.backgroundAnim()
+        learnView.onCell = { category in
+            debugPrint("category: \(category)")
+        }
     }
     
     override func didReceiveMemoryWarning() {

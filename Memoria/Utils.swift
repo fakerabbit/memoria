@@ -38,7 +38,7 @@ struct Utils {
     }
     
     static func logoFont() -> UIFont {
-        return UIFont(name: "Botdoh", size: 50.0)!
+        return UIFont(name: "Botdoh", size: 30.0)!
     }
     
     static func mainFont() -> UIFont {

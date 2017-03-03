@@ -8,6 +8,12 @@
 
 import Foundation
 import CoreData
+import UIKit
+
+struct Category {
+    var name: String?
+    var width: CGFloat = 0
+}
 
 struct Card {
     var question: String = ""
@@ -19,7 +25,56 @@ class DataMgr {
     /// sharedInstance: the DataMgr singleton
     static let sharedInstance = DataMgr()
     
-    static let kCardEntityName = "ECard"
+    static let kCardEntityName = "Card"
+    static let kCategoryEntityName = "Category"
+    
+    
+    typealias CardMgrCallback = (Card?) -> Void
+    typealias CategoryMgrCallback = ([Category?]) -> Void
+     
+     // MARK: - Core Data stack
+    
+    func fetchCategories(callback: @escaping CategoryMgrCallback) {
+        
+        var categories:[Category] = []
+        let request:NSFetchRequest<ECategory> = ECategory.fetchRequest()
+        var results:[ECategory]?
+        
+        do {
+            results = try self.managedObjectContext.fetch(request)
+            for cat: ECategory in results! {
+                let category: Category = Category(name: cat.name, width: 0)
+                categories.append(category)
+            }
+            if categories.count == 0 {
+                let info = Category(name: "No cards have been created yet...", width: 0)
+                let add = Category(name: "Click + button below to add one...", width: 0)
+                categories.append(info)
+                categories.append(add)
+            }
+            callback(categories)
+        }
+        catch let error {
+            debugPrint("error fetching categories: \(error.localizedDescription)")
+            callback(categories)
+        }
+    }
+     
+     /*func saveUser(user: User, callback: @escaping DataMgrCallback) {
+     
+     var eUser: EUser? = self.getUser()
+     
+     if eUser == nil {
+     eUser = NSEntityDescription.insertNewObject(forEntityName: DataMgr.kUserEntityName, into: self.managedObjectContext) as? EUser
+     }
+     
+     eUser?.email = user.email
+     eUser?.name = user.name
+     self.saveContext()
+     
+     callback(eUser)
+     }*/
+    
     
     lazy var managedObjectContext: NSManagedObjectContext = {
         return self.persistentContainer.viewContext
@@ -32,7 +87,7 @@ class DataMgr {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
          */
-        let container = NSPersistentContainer(name: "MemoriaDB")
+        let container = NSPersistentContainer(name: "Memoria")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
