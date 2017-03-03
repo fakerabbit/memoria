@@ -14,7 +14,7 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
     lazy var gradientLayer: CAGradientLayer! = {
         let view = CAGradientLayer()
         view.frame = CGRect.zero
-        view.colors = [Utils.darkColor().cgColor, Utils.backgroundColor().cgColor, Utils.blueShadowColor().cgColor]
+        view.colors = self.lastColors
         return view
     }()
     
@@ -42,6 +42,8 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         }
     }
     
+    private var lastColors: [CGColor]!
+    
     /*
      * MARK:- Init
      */
@@ -49,6 +51,7 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         super.init(frame: frame)
         //self.backgroundColor = Utils.backgroundColor()
         
+        self.lastColors = self.randomColors()
         self.layer.addSublayer(gradientLayer)
         self.addSubview(collectionView)
     }
@@ -97,7 +100,6 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         if category != nil {
             if let text: String = category!.name {
                 let label = RoundTextView(frame: CGRect.zero)
-                //let circle:CGFloat = 0
                 label.font = Utils.mainFont()
                 label.text = text
                 label.sizeToFit()
@@ -111,11 +113,35 @@ class LearnView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
                 category?.width = size.width
                 categories[indexPath.row] = category!
                 size.width = collectionView.frame.size.width - pad
-                //debugPrint("size for Text:")
-                //debugPrint(size)
             }
         }
         
         return size
+    }
+    
+    // MARK:- Animations
+    
+    func randomColors() -> [CGColor] {
+        let colors = [Utils.darkColor().cgColor, Utils.backgroundColor().cgColor, Utils.blueShadowColor().cgColor]
+        return colors.shuffled()
+    }
+    
+    func backgroundAnim() {
+        let timer = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true) { [weak self] (timer) in
+            
+            let fromColors = self?.lastColors
+            let colors = self?.randomColors()
+            self?.lastColors = colors
+            self?.gradientLayer.colors = colors
+            let animation : CABasicAnimation = CABasicAnimation(keyPath: "colors")
+            animation.fromValue = fromColors
+            animation.toValue = colors
+            animation.duration = 4.0
+            animation.isRemovedOnCompletion = true
+            animation.fillMode = kCAFillModeForwards
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            self?.gradientLayer.add(animation, forKey:"animateGradient")
+        }
+        RunLoop.current.add(timer, forMode: .commonModes)
     }
 }

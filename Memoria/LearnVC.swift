@@ -30,6 +30,7 @@ class LearnVC: MemoriaVC {
             Category(name: "Some sample category", width: 0),
             Category(name: "Default", width: 0)
         ]
+        learnView.backgroundAnim()
     }
     
     override func didReceiveMemoryWarning() {
