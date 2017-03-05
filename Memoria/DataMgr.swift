@@ -18,6 +18,7 @@ struct Category {
 struct Card {
     var question: String = ""
     var answer: String?
+    var category: String?
 }
 
 class DataMgr {
@@ -32,8 +33,6 @@ class DataMgr {
     typealias CardMgrCallback = (Card?) -> Void
     typealias CategoryMgrCallback = ([Category?]) -> Void
     typealias FristCategoryMgrCallback = (Category) -> Void
-     
-     // MARK: - Core Data stack
     
     func fetchCategories(callback: @escaping CategoryMgrCallback) {
         
@@ -104,22 +103,65 @@ class DataMgr {
             callback(category)
         }
     }
-     
-     /*func saveUser(user: User, callback: @escaping DataMgrCallback) {
-     
-     var eUser: EUser? = self.getUser()
-     
-     if eUser == nil {
-     eUser = NSEntityDescription.insertNewObject(forEntityName: DataMgr.kUserEntityName, into: self.managedObjectContext) as? EUser
-     }
-     
-     eUser?.email = user.email
-     eUser?.name = user.name
-     self.saveContext()
-     
-     callback(eUser)
-     }*/
     
+    func saveCategory(category: Category, callback: @escaping FristCategoryMgrCallback) {
+        
+        let request:NSFetchRequest<ECategory> = ECategory.fetchRequest()
+        let predicate = NSPredicate(format: "name == %@", category.name!)
+        var results:[ECategory]?
+        request.predicate = predicate
+        
+        do {
+            results = try self.managedObjectContext.fetch(request)
+            if results!.count == 0 {
+                let newCat:ECategory = (NSEntityDescription.insertNewObject(forEntityName: DataMgr.kCategoryEntityName, into: self.managedObjectContext) as? ECategory)!
+                newCat.name = category.name
+                newCat.id = NSUUID().uuidString
+                newCat.active = true
+                self.saveContext()
+            }
+            callback(category)
+        }
+        catch let error {
+            debugPrint("error fetching categories: \(error.localizedDescription)")
+            callback(category)
+        }
+    }
+    
+    func saveCard(card: Card, callback: @escaping CardMgrCallback) {
+        let newCard:ECard = NSEntityDescription.insertNewObject(forEntityName: DataMgr.kCardEntityName, into: self.managedObjectContext) as! ECard
+        newCard.id = NSUUID().uuidString
+        newCard.active = true
+        newCard.question = card.question
+        newCard.answer = card.answer
+        newCard.type = 0
+        
+        let request:NSFetchRequest<ECategory> = ECategory.fetchRequest()
+        let predicate = NSPredicate(format: "name == %@", card.category!)
+        var results:[ECategory]?
+        request.predicate = predicate
+        
+        do {
+            results = try self.managedObjectContext.fetch(request)
+            if results!.count > 0 {
+                let cat: ECategory = results!.first!
+                newCard.category = cat
+                self.saveContext()
+                callback(card)
+            }
+            else {
+                callback(nil)
+            }
+        }
+        catch let error {
+            debugPrint("error fetching categories: \(error.localizedDescription)")
+            callback(nil)
+        }
+        
+        self.saveContext()
+    }
+    
+    // MARK: - Core Data stack
     
     lazy var managedObjectContext: NSManagedObjectContext = {
         return self.persistentContainer.viewContext

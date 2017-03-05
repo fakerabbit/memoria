@@ -34,6 +34,7 @@ class CreateCardView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPicke
        let c = CreateCard(frame: CGRect.zero)
         c.qTfld.delegate = self
         c.aTfld.delegate = self
+        c.catTfld.delegate = self
         c.catBtn.addTarget(self, action: #selector(onCategory(_:)), for: .touchUpInside)
         return c
     }()
@@ -100,6 +101,8 @@ class CreateCardView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPicke
     func showPicker(show: Bool) {
         picker.isHidden = show == false
         picker.isUserInteractionEnabled = show == true
+        self.card.createBtn.isHidden = show
+        self.card.createBtn.isUserInteractionEnabled = show == false
     }
     
     func onClose(_ sender : UIButton) {
@@ -108,6 +111,18 @@ class CreateCardView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPicke
     
     func onCategory(_ sender : UIButton) {
         self.showPicker(show: picker.isHidden)
+    }
+    
+    func onChooseCategory(category: Category) {
+        self.card.catBtn.title = category.name
+    }
+    
+    func onCreateCategory() {
+        card.activateCatText(active: true)
+        self.card.catBtn.isHidden = true
+        self.card.catBtn.isUserInteractionEnabled = false
+        self.card.createBtn.isUserInteractionEnabled = true
+        self.card.createBtn.isHidden = false
     }
     
     // MARK:- UITextFieldDelegate methods
@@ -137,6 +152,12 @@ class CreateCardView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPicke
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         debugPrint("selected: \(categories[row]!.name)")
+        if row == categories.count - 1 {
+            self.onCreateCategory()
+        }
+        else {
+            self.onChooseCategory(category: self.categories[row]!)
+        }
         self.showPicker(show: false)
     }
     

@@ -61,6 +61,13 @@ class CreateCard: UIView {
         return btn
     }()
     
+    lazy var catTfld: LineCancelTextField! = {
+        let tf = LineCancelTextField(frame: CGRect.zero)
+        tf.tag = 3
+        tf.closeBtn.addTarget(self, action: #selector(onCloseCat(_:)), for: .touchUpInside)
+        return tf
+    }()
+    
     private let pad: CGFloat = 20
     private let textFieldH: CGFloat = 40
     
@@ -82,6 +89,8 @@ class CreateCard: UIView {
         self.addSubview(aTfld)
         self.addSubview(catBtn)
         self.addSubview(createBtn)
+        self.addSubview(catTfld)
+        activateCatText(active: false)
         
         DataMgr.sharedInstance.fetchFirstCategory() { category in
             self.catBtn.title = category.name
@@ -97,12 +106,27 @@ class CreateCard: UIView {
         super.layoutSubviews()
         let w = self.frame.size.width
         self.layer.shadowRadius = w/5.5
+        let padY:CGFloat = 10.0
         qLbl.frame = CGRect(x: pad, y: pad, width: w - pad * 2, height: qLbl.frame.size.height)
-        qTfld.frame = CGRect(x: qLbl.frame.minX, y: qLbl.frame.maxY + textFieldH/2, width: qLbl.frame.size.width, height: textFieldH)
-        aLbl.frame = CGRect(x: qLbl.frame.minX, y: qTfld.frame.maxY + textFieldH, width: qLbl.frame.size.width, height: aLbl.frame.size.height)
-        aTfld.frame = CGRect(x: qLbl.frame.minX, y: aLbl.frame.maxY + textFieldH/2, width: qLbl.frame.size.width, height: textFieldH)
-        catLbl.frame = CGRect(x: qLbl.frame.minX, y: aTfld.frame.maxY + textFieldH, width: qLbl.frame.size.width, height: catLbl.frame.size.height + 5)
-        catBtn.frame = CGRect(x: qLbl.frame.minX, y: catLbl.frame.maxY + textFieldH/2, width: qLbl.frame.size.width/2, height: textFieldH)
-        createBtn.frame = CGRect(x: qLbl.frame.minX, y: catBtn.frame.maxY + textFieldH, width: qLbl.frame.size.width, height: textFieldH)
+        qTfld.frame = CGRect(x: qLbl.frame.minX, y: qLbl.frame.maxY - padY, width: qLbl.frame.size.width, height: textFieldH)
+        aLbl.frame = CGRect(x: qLbl.frame.minX, y: qTfld.frame.maxY + padY, width: qLbl.frame.size.width, height: aLbl.frame.size.height)
+        aTfld.frame = CGRect(x: qLbl.frame.minX, y: aLbl.frame.maxY - padY, width: qLbl.frame.size.width, height: textFieldH)
+        catLbl.frame = CGRect(x: qLbl.frame.minX, y: aTfld.frame.maxY + padY, width: qLbl.frame.size.width, height: catLbl.frame.size.height + 5)
+        catBtn.frame = CGRect(x: qLbl.frame.minX, y: catLbl.frame.maxY + padY, width: qLbl.frame.size.width/2, height: textFieldH)
+        createBtn.frame = CGRect(x: qLbl.frame.minX, y: catBtn.frame.maxY + textFieldH/2, width: qLbl.frame.size.width, height: textFieldH)
+        catTfld.frame = CGRect(x: qLbl.frame.minX, y: catLbl.frame.maxY - padY, width: qLbl.frame.size.width, height: textFieldH)
+    }
+    
+    // MARK:- Private
+    
+    func onCloseCat(_ sender : UIButton) {
+        activateCatText(active: false)
+        catBtn.isHidden = false
+        catBtn.isUserInteractionEnabled = true
+    }
+    
+    func activateCatText(active: Bool) {
+        catTfld.isHidden = active == false
+        catTfld.isUserInteractionEnabled = active == true
     }
 }

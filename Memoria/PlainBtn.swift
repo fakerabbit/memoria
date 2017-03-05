@@ -18,6 +18,21 @@ class PlainBtn: UIButton {
         }
     }
     
+    var makeSmall: Bool! {
+        didSet {
+            if makeSmall == true {
+                self.setTitleColor(Utils.backgroundColor(), for: .normal)
+                self.setTitleColor(Utils.cardColor(), for: .highlighted)
+                self.titleLabel?.font = Utils.buttonSmallerFont()
+            }
+            else {
+                self.setTitleColor(Utils.textColor(), for: .normal)
+                self.setTitleColor(Utils.blueShadowColor(), for: .highlighted)
+                self.titleLabel?.font = Utils.buttonSmallFont()
+            }
+        }
+    }
+    
     // MARK:- Init
     override init(frame: CGRect) {
         super.init(frame: frame)

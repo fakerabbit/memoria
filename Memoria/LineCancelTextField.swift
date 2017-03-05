@@ -1,21 +1,28 @@
 //
-//  LineTextField.swift
+//  LineCancelTextField.swift
 //  Memoria
 //
-//  Created by Mirko Justiniano on 3/3/17.
+//  Created by Mirko Justiniano on 3/4/17.
 //  Copyright © 2017 MM. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class LineTextField: UITextField {
+class LineCancelTextField: UITextField {
+    
+    lazy var closeBtn: PlainBtn! = {
+        let b = PlainBtn(frame: CGRect.zero)
+        b.title = "X"
+        b.makeSmall = true
+        return b
+    }()
     
     private let chatInset: CGFloat = 2
     private let topInset: CGFloat = 10
     
     private lazy var line:UIView! = {
-       let v = UIView(frame: CGRect.zero)
+        let v = UIView(frame: CGRect.zero)
         v.backgroundColor = Utils.backgroundColor()
         return v
     }()
@@ -29,6 +36,7 @@ class LineTextField: UITextField {
         self.textColor = Utils.backgroundColor()
         self.returnKeyType = .next
         self.addSubview(line)
+        self.addSubview(closeBtn)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,5 +58,6 @@ class LineTextField: UITextField {
         let w = self.frame.size.width
         let h = self.frame.size.height
         line.frame = CGRect(x: 0, y: h, width: w, height: 1)
+        closeBtn.frame = CGRect(x: w - h, y: 0, width: h, height: h)
     }
 }
