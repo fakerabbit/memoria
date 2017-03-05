@@ -24,7 +24,7 @@ class MemoriaVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        if (self.navigationController?.isKind(of: NavController.classForCoder()))! {
+        if (self.navigationController != nil && (self.navigationController?.isKind(of: NavController.classForCoder()))!) {
             self.nav = self.navigationController as? NavController
         }
     }

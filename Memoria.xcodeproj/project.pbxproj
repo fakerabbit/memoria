@@ -110,8 +110,8 @@
 			children = (
 				AC9CBB461E64E4EA00C634F3 /* Utils.swift */,
 				AC9CBB481E64E4EA00C634F3 /* NavController.swift */,
-				AC9CBB451E64E4EA00C634F3 /* DataMgr.swift */,
 				AC9CBB471E64E4EA00C634F3 /* MemoriaVC.swift */,
+				AC9CBB451E64E4EA00C634F3 /* DataMgr.swift */,
 				AC34D5C31E68B4DB00120C62 /* RoundTextView.swift */,
 				AC34D5C51E68E61300120C62 /* Extensions.swift */,
 				AC5692D61E691A6E004EFC73 /* CircleBtn.swift */,
@@ -143,6 +143,7 @@
 		AC9CBB2F1E64E2F700C634F3 /* Memoria */ = {
 			isa = PBXGroup;
 			children = (
+				ACB57EBA1E6CB58C0079978B /* Card Screen */,
 				AC7CDB691E67C7B60025FEFE /* Assets */,
 				AC7CDB711E67CC340025FEFE /* Core */,
 				AC2566411E6A064F0056895D /* Create Card */,
@@ -154,6 +155,13 @@
 				AC9CBB371E64E2F800C634F3 /* Memoria.xcdatamodeld */,
 			);
 			path = Memoria;
+			sourceTree = "<group>";
+		};
+		ACB57EBA1E6CB58C0079978B /* Card Screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Card Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

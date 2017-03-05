@@ -11,6 +11,8 @@ import UIKit
 
 class CreateCardVC: UIViewController {
     
+    var nav:NavController?
+    
     lazy var createView:CreateCardView! = {
         let frame = UIScreen.main.bounds
         let v = CreateCardView(frame: frame)
@@ -110,6 +112,6 @@ class CreateCardVC: UIViewController {
     }
     
     func goToCardScreen() {
-        debugPrint("go to Card screen!")
+        self.nav?.goToCardAfterCreate(vc: self)
     }
 }

@@ -37,6 +37,7 @@ class LearnVC: MemoriaVC {
         learnView.onAdd = { [weak self] view in
             
             let vc = CreateCardVC()
+            vc.nav = self?.nav
             self?.present(vc, animated: true, completion: nil)
         }
     }

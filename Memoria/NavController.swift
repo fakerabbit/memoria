@@ -35,4 +35,13 @@ class NavController: UINavigationController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
+    
+    /*
+     * CUSTOM NAVIGATION
+     */
+    
+    func goToCardAfterCreate(vc: UIViewController) {
+        debugPrint("go to Card screen!")
+        vc.dismiss(animated: true, completion: {})
+    }
 }
