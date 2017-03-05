@@ -14,12 +14,16 @@ class CreateCardView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPicke
     typealias CreateCardViewOnClose = (CreateCardView) -> Void
     var onClose: CreateCardViewOnClose = { view in }
     
+    private var padY: CGFloat = 100.0
+    private var isKeyboardShowing: Bool = false
+    
     private lazy var titleLbl: UILabel! = {
        let lbl = UILabel(frame: CGRect.zero)
         lbl.font = Utils.logoFont()
         lbl.textColor = Utils.textColor()
         lbl.text = "Create Card"
         lbl.sizeToFit()
+        lbl.frame.size.height += 5
         return lbl
     }()
     
@@ -71,6 +75,10 @@ class CreateCardView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPicke
         self.addSubview(closeBtn)
         self.addSubview(picker)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(notification:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidChangeStatusBarNotification(notification:)), name: .UIApplicationWillChangeStatusBarFrame, object: nil)
+        
         DataMgr.sharedInstance.fetchCreateCategories() { categories in
             self.categories = categories
             let cat: Category = Category(name: "Add new category", width: 0)
@@ -88,11 +96,10 @@ class CreateCardView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPicke
         let w = self.frame.size.width
         let h = self.frame.size.height
         let pad: CGFloat = 30.0
-        let padY: CGFloat = 100.0
         gradientLayer.frame = self.bounds
         card.frame = CGRect(x: pad, y: padY, width: w - pad * 2, height: h - padY/2)
         closeBtn.frame = CGRect(x: w - (pad + btnS), y: padY - btnS, width: btnS, height: btnS)
-        titleLbl.frame = CGRect(x: pad, y: padY - (titleLbl.frame.size.height + 15), width: titleLbl.frame.size.width, height: titleLbl.frame.size.height + 5)
+        titleLbl.frame = CGRect(x: pad, y: closeBtn.frame.minY, width: titleLbl.frame.size.width, height: titleLbl.frame.size.height)
         picker.frame = CGRect(x: pad, y: h - picker.frame.size.height, width: w - pad * 2, height: picker.frame.size.height)
     }
     
@@ -123,6 +130,7 @@ class CreateCardView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPicke
         self.card.catBtn.isUserInteractionEnabled = false
         self.card.createBtn.isUserInteractionEnabled = true
         self.card.createBtn.isHidden = false
+        card.catTfld.becomeFirstResponder()
     }
     
     // MARK:- UITextFieldDelegate methods
@@ -159,6 +167,48 @@ class CreateCardView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPicke
             self.onChooseCategory(category: self.categories[row]!)
         }
         self.showPicker(show: false)
+    }
+    
+    // MARK:- Keyboard notifications
+    
+    func updateCardPositions() {
+        
+        if isKeyboardShowing == false {
+            //default position
+            padY = 100
+        }
+        else {
+            if card.qTfld.isFirstResponder == true {
+                padY = 220
+            }
+            else if card.aTfld.isFirstResponder == true {
+                padY = 120
+            }
+            else if card.catTfld.isFirstResponder == true {
+                padY = 20
+            }
+            else {
+                padY = 100
+            }
+        }
+        //debugPrint("padY: \(padY)")
+        self.layoutSubviews()
+    }
+    
+    func keyboardWillShowNotification(notification: NSNotification) {
+        
+        isKeyboardShowing = !isKeyboardShowing
+        updateCardPositions()
+    }
+    
+    func keyboardWillHideNotification(notification: NSNotification) {
+        
+        isKeyboardShowing = !isKeyboardShowing
+        updateCardPositions()
+    }
+    
+    func applicationDidChangeStatusBarNotification(notification: NSNotification) {
+        updateCardPositions()
     }
     
     // MARK:- Animations

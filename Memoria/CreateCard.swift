@@ -47,6 +47,7 @@ class CreateCard: UIView {
         lbl.textColor = Utils.backgroundColor()
         lbl.text = "Category"
         lbl.sizeToFit()
+        lbl.frame.size.height += 5
         return lbl
     }()
     
@@ -106,15 +107,15 @@ class CreateCard: UIView {
         super.layoutSubviews()
         let w = self.frame.size.width
         self.layer.shadowRadius = w/5.5
-        let padY:CGFloat = 10.0
+        let padY:CGFloat = 40.0
         qLbl.frame = CGRect(x: pad, y: pad, width: w - pad * 2, height: qLbl.frame.size.height)
-        qTfld.frame = CGRect(x: qLbl.frame.minX, y: qLbl.frame.maxY - padY, width: qLbl.frame.size.width, height: textFieldH)
+        qTfld.frame = CGRect(x: qLbl.frame.minX, y: qLbl.frame.maxY, width: qLbl.frame.size.width, height: textFieldH)
         aLbl.frame = CGRect(x: qLbl.frame.minX, y: qTfld.frame.maxY + padY, width: qLbl.frame.size.width, height: aLbl.frame.size.height)
-        aTfld.frame = CGRect(x: qLbl.frame.minX, y: aLbl.frame.maxY - padY, width: qLbl.frame.size.width, height: textFieldH)
-        catLbl.frame = CGRect(x: qLbl.frame.minX, y: aTfld.frame.maxY + padY, width: qLbl.frame.size.width, height: catLbl.frame.size.height + 5)
+        aTfld.frame = CGRect(x: qLbl.frame.minX, y: aLbl.frame.maxY, width: qLbl.frame.size.width, height: textFieldH)
+        catLbl.frame = CGRect(x: qLbl.frame.minX, y: aTfld.frame.maxY + padY, width: qLbl.frame.size.width, height: catLbl.frame.size.height)
         catBtn.frame = CGRect(x: qLbl.frame.minX, y: catLbl.frame.maxY + padY, width: qLbl.frame.size.width/2, height: textFieldH)
-        createBtn.frame = CGRect(x: qLbl.frame.minX, y: catBtn.frame.maxY + textFieldH/2, width: qLbl.frame.size.width, height: textFieldH)
-        catTfld.frame = CGRect(x: qLbl.frame.minX, y: catLbl.frame.maxY - padY, width: qLbl.frame.size.width, height: textFieldH)
+        createBtn.frame = CGRect(x: qLbl.frame.minX, y: catBtn.frame.maxY + textFieldH, width: qLbl.frame.size.width, height: textFieldH)
+        catTfld.frame = CGRect(x: qLbl.frame.minX, y: catLbl.frame.maxY, width: qLbl.frame.size.width, height: textFieldH)
     }
     
     // MARK:- Private
