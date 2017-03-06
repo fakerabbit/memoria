@@ -109,6 +109,18 @@ struct Utils {
         return UIColor(colorLiteralRed: 28/255, green: 15/255, blue: 56/255, alpha: 1.0)
     }
     
+    static func lightGrayColor() -> UIColor {
+        return UIColor(colorLiteralRed: 231/255, green: 232/255, blue: 237/255, alpha: 1.0)
+    }
+    
+    static func lightBorderColor() -> UIColor {
+        return UIColor(colorLiteralRed: 239/255, green: 240/255, blue: 243/255, alpha: 1.0)
+    }
+    
+    static func aquaColor() -> UIColor {
+        return UIColor(colorLiteralRed: 0/255, green: 204/255, blue: 229/255, alpha: 1.0)
+    }
+    
     /*
      * MARK:- IMAGES
      */

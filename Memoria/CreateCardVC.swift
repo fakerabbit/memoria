@@ -73,9 +73,9 @@ class CreateCardVC: UIViewController {
                 self.present(controller, animated: true, completion: nil)
             }
             else {
-                let category:Category = Category(name: createView.card.catTfld.text, width: 0)
+                let category:Category = Category(name: createView.card.catTfld.text, width: 0, active: true)
                 DataMgr.sharedInstance.saveCategory(category: category) { [weak self] category in
-                    let card = Card(question: (self?.createView.card.qTfld.text!)!, answer: self?.createView.card.aTfld.text, category: self?.createView.card.catBtn.title)
+                    let card = Card(id: "", question: (self?.createView.card.qTfld.text!)!, answer: self?.createView.card.aTfld.text, category: self?.createView.card.catBtn.title, active: true)
                     DataMgr.sharedInstance.saveCard(card: card) { [weak self] card in
                         if card == nil {
                             let action = UIAlertAction(title: "Ok", style: .destructive, handler: {(alert: UIAlertAction!) in
@@ -85,16 +85,16 @@ class CreateCardVC: UIViewController {
                             self?.present(controller, animated: true, completion: nil)
                         }
                         else {
-                            self?.goToCardScreen()
+                            self?.goToCardScreen(category: category)
                         }
                     }
                 }
             }
         }
         else {
-            let category:Category = Category(name: createView.card.catBtn.title, width: 0)
+            let category:Category = Category(name: createView.card.catBtn.title, width: 0, active: true)
             DataMgr.sharedInstance.saveCategory(category: category) { [weak self] category in
-                let card = Card(question: (self?.createView.card.qTfld.text!)!, answer: self?.createView.card.aTfld.text, category: self?.createView.card.catBtn.title)
+                let card = Card(id: "", question: (self?.createView.card.qTfld.text!)!, answer: self?.createView.card.aTfld.text, category: self?.createView.card.catBtn.title, active: true)
                 DataMgr.sharedInstance.saveCard(card: card) { [weak self] card in
                     if card == nil {
                         let action = UIAlertAction(title: "Ok", style: .destructive, handler: {(alert: UIAlertAction!) in
@@ -104,14 +104,16 @@ class CreateCardVC: UIViewController {
                         self?.present(controller, animated: true, completion: nil)
                     }
                     else {
-                        self?.goToCardScreen()
+                        self?.goToCardScreen(category: category)
                     }
                 }
             }
         }
     }
     
-    func goToCardScreen() {
-        self.nav?.goToCardAfterCreate(vc: self)
+    func goToCardScreen(category: Category) {
+        DataMgr.sharedInstance.getCardsForCategory(category: category) { cards in
+            (self.nav?.goToCardAfterCreate(vc: self, cards: cards as! [Card]))!
+        }
     }
 }

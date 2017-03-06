@@ -32,6 +32,10 @@
 		AC9CBB4E1E64E4EA00C634F3 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CBB481E64E4EA00C634F3 /* NavController.swift */; };
 		AC9CBB4F1E64E4EA00C634F3 /* LearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CBB491E64E4EA00C634F3 /* LearnVC.swift */; };
 		AC9CBB501E64E4EA00C634F3 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CBB4A1E64E4EA00C634F3 /* LearnView.swift */; };
+		ACB57EBC1E6CC8950079978B /* CardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB57EBB1E6CC8950079978B /* CardsVC.swift */; };
+		ACB57EBE1E6CC8AA0079978B /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB57EBD1E6CC8AA0079978B /* CardsView.swift */; };
+		ACEFC5681E6DD3D900525B20 /* CardsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5671E6DD3D900525B20 /* CardsCell.swift */; };
+		ACEFC56A1E6DE8F800525B20 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5691E6DE8F800525B20 /* Switch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +66,10 @@
 		AC9CBB481E64E4EA00C634F3 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		AC9CBB491E64E4EA00C634F3 /* LearnVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnVC.swift; sourceTree = "<group>"; };
 		AC9CBB4A1E64E4EA00C634F3 /* LearnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
+		ACB57EBB1E6CC8950079978B /* CardsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsVC.swift; sourceTree = "<group>"; };
+		ACB57EBD1E6CC8AA0079978B /* CardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsView.swift; sourceTree = "<group>"; };
+		ACEFC5671E6DD3D900525B20 /* CardsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsCell.swift; sourceTree = "<group>"; };
+		ACEFC5691E6DE8F800525B20 /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,9 +151,9 @@
 		AC9CBB2F1E64E2F700C634F3 /* Memoria */ = {
 			isa = PBXGroup;
 			children = (
-				ACB57EBA1E6CB58C0079978B /* Card Screen */,
 				AC7CDB691E67C7B60025FEFE /* Assets */,
 				AC7CDB711E67CC340025FEFE /* Core */,
+				ACB57EBA1E6CB58C0079978B /* Cards Screen */,
 				AC2566411E6A064F0056895D /* Create Card */,
 				AC7CDB701E67CC1A0025FEFE /* Learn Screen */,
 				AC9CBB301E64E2F700C634F3 /* AppDelegate.swift */,
@@ -157,11 +165,15 @@
 			path = Memoria;
 			sourceTree = "<group>";
 		};
-		ACB57EBA1E6CB58C0079978B /* Card Screen */ = {
+		ACB57EBA1E6CB58C0079978B /* Cards Screen */ = {
 			isa = PBXGroup;
 			children = (
+				ACB57EBB1E6CC8950079978B /* CardsVC.swift */,
+				ACB57EBD1E6CC8AA0079978B /* CardsView.swift */,
+				ACEFC5671E6DD3D900525B20 /* CardsCell.swift */,
+				ACEFC5691E6DE8F800525B20 /* Switch.swift */,
 			);
-			name = "Card Screen";
+			name = "Cards Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACB57EBE1E6CC8AA0079978B /* CardsView.swift in Sources */,
 				AC9CBB4C1E64E4EA00C634F3 /* Utils.swift in Sources */,
 				AC25664B1E6A12F20056895D /* LineTextField.swift in Sources */,
 				AC9CBB4E1E64E4EA00C634F3 /* NavController.swift in Sources */,
@@ -247,10 +260,13 @@
 				AC9CBB4D1E64E4EA00C634F3 /* MemoriaVC.swift in Sources */,
 				AC5692D71E691A6E004EFC73 /* CircleBtn.swift in Sources */,
 				AC2566401E69E5910056895D /* CircleTextView.swift in Sources */,
+				ACEFC56A1E6DE8F800525B20 /* Switch.swift in Sources */,
 				AC9CBB4F1E64E4EA00C634F3 /* LearnVC.swift in Sources */,
+				ACB57EBC1E6CC8950079978B /* CardsVC.swift in Sources */,
 				AC34D5C21E68AEFB00120C62 /* LearnCell.swift in Sources */,
 				AC2566431E6A066C0056895D /* CreateCardVC.swift in Sources */,
 				AC2566471E6A07F10056895D /* CreateCard.swift in Sources */,
+				ACEFC5681E6DD3D900525B20 /* CardsCell.swift in Sources */,
 				AC34D5C41E68B4DB00120C62 /* RoundTextView.swift in Sources */,
 				AC9CBB391E64E2F800C634F3 /* Memoria.xcdatamodeld in Sources */,
 				AC2566451E6A06760056895D /* CreateCardView.swift in Sources */,

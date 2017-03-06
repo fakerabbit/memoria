@@ -81,7 +81,7 @@ class CreateCardView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPicke
         
         DataMgr.sharedInstance.fetchCreateCategories() { categories in
             self.categories = categories
-            let cat: Category = Category(name: "Add new category", width: 0)
+            let cat: Category = Category(name: "Add new category", width: 0, active: true)
             self.categories.append(cat)
         }
     }
@@ -159,7 +159,7 @@ class CreateCardView: UIView, UITextFieldDelegate, UIPickerViewDelegate, UIPicke
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        debugPrint("selected: \(categories[row]!.name)")
+        //debugPrint("selected: \(categories[row]!.name)")
         if row == categories.count - 1 {
             self.onCreateCategory()
         }

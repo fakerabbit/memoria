@@ -32,7 +32,12 @@ class LearnVC: MemoriaVC {
         }
         learnView.backgroundAnim()
         learnView.onCell = { category in
-            debugPrint("category: \(category)")
+            //debugPrint("category: \(category)")
+            DataMgr.sharedInstance.getCardsForCategory(category: category) { [weak self] cards in
+                if cards.count > 0 {
+                    self?.nav?.navToCardsScreen(cards: cards)
+                }
+            }
         }
         learnView.onAdd = { [weak self] view in
             

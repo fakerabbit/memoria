@@ -40,8 +40,14 @@ class NavController: UINavigationController {
      * CUSTOM NAVIGATION
      */
     
-    func goToCardAfterCreate(vc: UIViewController) {
-        debugPrint("go to Card screen!")
+    func goToCardAfterCreate(vc: UIViewController, cards: [Card]) {
         vc.dismiss(animated: true, completion: {})
+        self.navToCardsScreen(cards: cards)
+    }
+    
+    func navToCardsScreen(cards: [Card?]) {
+        let vc = CardsVC()
+        vc.cards = cards
+        self.pushViewController(vc, animated: true)
     }
 }

@@ -13,12 +13,15 @@ import UIKit
 struct Category {
     var name: String?
     var width: CGFloat = 0
+    var active: Bool = true
 }
 
 struct Card {
+    var id: String = ""
     var question: String = ""
     var answer: String?
     var category: String?
+    var active: Bool = true
 }
 
 class DataMgr {
@@ -33,6 +36,7 @@ class DataMgr {
     typealias CardMgrCallback = (Card?) -> Void
     typealias CategoryMgrCallback = ([Category?]) -> Void
     typealias FristCategoryMgrCallback = (Category) -> Void
+    typealias CardsMgrCallback = ([Card?]) -> Void
     
     func fetchCategories(callback: @escaping CategoryMgrCallback) {
         
@@ -43,12 +47,12 @@ class DataMgr {
         do {
             results = try self.managedObjectContext.fetch(request)
             for cat: ECategory in results! {
-                let category: Category = Category(name: cat.name, width: 0)
+                let category: Category = Category(name: cat.name, width: 0, active: cat.active)
                 categories.append(category)
             }
             if categories.count == 0 {
-                let info = Category(name: "No cards have been created yet...", width: 0)
-                let add = Category(name: "Click + button to add one...", width: 0)
+                let info = Category(name: "No cards have been created yet...", width: 0, active: false)
+                let add = Category(name: "Click + button to add one...", width: 0, active: false)
                 categories.append(info)
                 categories.append(add)
             }
@@ -69,11 +73,11 @@ class DataMgr {
         do {
             results = try self.managedObjectContext.fetch(request)
             for cat: ECategory in results! {
-                let category: Category = Category(name: cat.name, width: 0)
+                let category: Category = Category(name: cat.name, width: 0, active: cat.active)
                 categories.append(category)
             }
             if categories.count == 0 {
-                let info = Category(name: "Default", width: 0)
+                let info = Category(name: "Default", width: 0, active: true)
                 categories.append(info)
             }
             callback(categories)
@@ -86,7 +90,7 @@ class DataMgr {
     
     func fetchFirstCategory(callback: @escaping FristCategoryMgrCallback) {
         
-        var category:Category = Category(name: "Default", width: 0)
+        var category:Category = Category(name: "Default", width: 0, active: true)
         let request:NSFetchRequest<ECategory> = ECategory.fetchRequest()
         var results:[ECategory]?
         
@@ -94,7 +98,7 @@ class DataMgr {
             results = try self.managedObjectContext.fetch(request)
             if results!.count > 0 {
                 let cat: ECategory = results!.first!
-                category = Category(name: cat.name, width: 0)
+                category = Category(name: cat.name, width: 0, active: cat.active)
             }
             callback(category)
         }
@@ -159,6 +163,82 @@ class DataMgr {
         }
         
         self.saveContext()
+    }
+    
+    func getCardsForCategory(category: Category, callback: @escaping CardsMgrCallback) {
+        
+        let request:NSFetchRequest<ECategory> = ECategory.fetchRequest()
+        let predicate = NSPredicate(format: "name == %@", category.name!)
+        var results:[ECategory]?
+        var cards: [Card?] = []
+        request.predicate = predicate
+        
+        do {
+            results = try self.managedObjectContext.fetch(request)
+            for cat: ECategory in results! {
+                let cardArray:[ECard] = cat.cards?.allObjects as! [ECard]
+                for card: ECard in cardArray {
+                    debugPrint("card for cat: \(card.active)")
+                    let c = Card(id: card.id!,question: card.question!, answer: card.answer, category: cat.name, active: card.active)
+                    cards.append(c)
+                }
+            }
+        }
+        catch let error {
+            debugPrint("error fetching categories: \(error.localizedDescription)")
+        }
+        callback(cards)
+    }
+    
+    func updateCardStatusForCategory(category: String, active: Bool, callback: @escaping CardsMgrCallback) {
+        
+        let request:NSFetchRequest<ECategory> = ECategory.fetchRequest()
+        let predicate = NSPredicate(format: "name == %@", category)
+        var results:[ECategory]?
+        var cards: [Card?] = []
+        request.predicate = predicate
+        
+        do {
+            results = try self.managedObjectContext.fetch(request)
+            for cat: ECategory in results! {
+                let cardArray:[ECard] = cat.cards?.allObjects as! [ECard]
+                for card: ECard in cardArray {
+                    card.active = active
+                    let c = Card(id: card.id!,question: card.question!, answer: card.answer, category: cat.name, active: card.active)
+                    cards.append(c)
+                }
+            }
+        }
+        catch let error {
+            debugPrint("error fetching categories: \(error.localizedDescription)")
+        }
+        self.saveContext()
+        callback(cards)
+    }
+    
+    func updateCardStatus(cardId: String, active: Bool, callback: @escaping CardMgrCallback) {
+        
+        let request:NSFetchRequest<ECard> = ECard.fetchRequest()
+        let predicate = NSPredicate(format: "id == %@", cardId)
+        var results:[ECard]?
+        var card: Card?
+        request.predicate = predicate
+        
+        do {
+            results = try self.managedObjectContext.fetch(request)
+            
+            if (results?.count)! > 0 {
+                let c:ECard = (results?.first)!
+                c.active = active
+                card = Card(id: c.id!, question: c.question!, answer: c.answer, category: c.category?.name, active: c.active)
+                debugPrint("updated card: \(c)")
+            }
+        }
+        catch let error {
+            debugPrint("error fetching categories: \(error.localizedDescription)")
+        }
+        self.saveContext()
+        callback(card)
     }
     
     // MARK: - Core Data stack
