@@ -12,6 +12,7 @@ import UIKit
 class CardsVC: MemoriaVC {
     
     var cards: [Card?]!
+    var category: String!
     
     lazy var cardsView:CardsView! = {
         let frame = UIScreen.main.bounds
@@ -28,8 +29,32 @@ class CardsVC: MemoriaVC {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         cardsView.backBtn.addTarget(self, action: #selector(onBack(_:)), for: .touchUpInside)
-        cardsView.cards = cards
         cardsView.catSwitch.addTarget(self, action: #selector(onCatSwitch(_:)), for: .valueChanged)
+        cardsView.onCard = { [weak self] card in
+            
+            let vc = CardVC()
+            vc.nav = self?.nav
+            vc.card = card
+            self?.present(vc, animated: true, completion: nil)
+        }
+        let card: Card = cards.first!!
+        category = card.category
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let cat = Category(name: category, width: 0, active: true)
+        DataMgr.sharedInstance.getCardsForCategory(category: cat) { [weak self] newCards in
+            
+            if newCards.count == 0 {
+                _ = self?.nav?.popViewController(animated: true)
+            }
+            else {
+                self?.cards = newCards
+                self?.cardsView.cards = newCards
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

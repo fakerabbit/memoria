@@ -26,10 +26,6 @@ class LearnVC: MemoriaVC {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //Utils.printFontNamesInSystem()
-        DataMgr.sharedInstance.fetchCategories() { categories in
-            
-            self.learnView.categories = categories
-        }
         learnView.backgroundAnim()
         learnView.onCell = { category in
             //debugPrint("category: \(category)")
@@ -39,11 +35,19 @@ class LearnVC: MemoriaVC {
                 }
             }
         }
-        learnView.onAdd = { [weak self] view in
+        learnView.onAdd = { [weak self] _ in
             
             let vc = CreateCardVC()
             vc.nav = self?.nav
             self?.present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DataMgr.sharedInstance.fetchCategories() { categories in
+            
+            self.learnView.categories = categories
         }
     }
     

@@ -83,7 +83,7 @@ class DataMgr {
             callback(categories)
         }
         catch let error {
-            debugPrint("error fetching categories: \(error.localizedDescription)")
+            debugPrint("error fetching create categories: \(error.localizedDescription)")
             callback(categories)
         }
     }
@@ -103,7 +103,7 @@ class DataMgr {
             callback(category)
         }
         catch let error {
-            debugPrint("error fetching categories: \(error.localizedDescription)")
+            debugPrint("error fetching first category: \(error.localizedDescription)")
             callback(category)
         }
     }
@@ -127,7 +127,7 @@ class DataMgr {
             callback(category)
         }
         catch let error {
-            debugPrint("error fetching categories: \(error.localizedDescription)")
+            debugPrint("error saving category: \(error.localizedDescription)")
             callback(category)
         }
     }
@@ -158,7 +158,7 @@ class DataMgr {
             }
         }
         catch let error {
-            debugPrint("error fetching categories: \(error.localizedDescription)")
+            debugPrint("error saving card: \(error.localizedDescription)")
             callback(nil)
         }
         
@@ -178,14 +178,14 @@ class DataMgr {
             for cat: ECategory in results! {
                 let cardArray:[ECard] = cat.cards?.allObjects as! [ECard]
                 for card: ECard in cardArray {
-                    debugPrint("card for cat: \(card.active)")
+                    //debugPrint("card for cat: \(card.active)")
                     let c = Card(id: card.id!,question: card.question!, answer: card.answer, category: cat.name, active: card.active)
                     cards.append(c)
                 }
             }
         }
         catch let error {
-            debugPrint("error fetching categories: \(error.localizedDescription)")
+            debugPrint("error fetching cards: \(error.localizedDescription)")
         }
         callback(cards)
     }
@@ -210,7 +210,7 @@ class DataMgr {
             }
         }
         catch let error {
-            debugPrint("error fetching categories: \(error.localizedDescription)")
+            debugPrint("error updating card status for category: \(error.localizedDescription)")
         }
         self.saveContext()
         callback(cards)
@@ -231,11 +231,50 @@ class DataMgr {
                 let c:ECard = (results?.first)!
                 c.active = active
                 card = Card(id: c.id!, question: c.question!, answer: c.answer, category: c.category?.name, active: c.active)
-                debugPrint("updated card: \(c)")
+                //debugPrint("updated card: \(c)")
             }
         }
         catch let error {
-            debugPrint("error fetching categories: \(error.localizedDescription)")
+            debugPrint("error updating card status: \(error.localizedDescription)")
+        }
+        self.saveContext()
+        callback(card)
+    }
+    
+    func updateCard(card: Card, callback: @escaping CardMgrCallback) {
+        
+        let request:NSFetchRequest<ECard> = ECard.fetchRequest()
+        let predicate = NSPredicate(format: "id == %@", card.id)
+        var results:[ECard]?
+        request.predicate = predicate
+        
+        do {
+            results = try self.managedObjectContext.fetch(request)
+            
+            if (results?.count)! > 0 {
+                let c:ECard = (results?.first)!
+                c.question = card.question
+                c.answer = card.answer
+                c.active = card.active
+                
+                let requestCat:NSFetchRequest<ECategory> = ECategory.fetchRequest()
+                let predicateCat = NSPredicate(format: "name == %@", card.category!)
+                var resultsCat:[ECategory]?
+                requestCat.predicate = predicateCat
+                
+                resultsCat = try self.managedObjectContext.fetch(requestCat)
+                if resultsCat!.count > 0 {
+                    let cat: ECategory = resultsCat!.first!
+                    c.category = cat
+                    debugPrint("updated card: \(c)")
+                }
+                else {
+                    callback(nil)
+                }
+            }
+        }
+        catch let error {
+            debugPrint("error updating card: \(error.localizedDescription)")
         }
         self.saveContext()
         callback(card)

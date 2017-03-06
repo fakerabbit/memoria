@@ -11,6 +11,9 @@ import UIKit
 
 class CardsView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    typealias CardsViewOnCard = (Card) -> Void
+    var onCard: CardsViewOnCard = { card in }
+    
     var cards:[Card?]! {
         didSet {
             if cards.count > 0 {
@@ -116,13 +119,19 @@ class CardsView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let card = self.cards[indexPath.row]
-        debugPrint("cell card: \(card)")
+        //debugPrint("cell card: \(card)")
         let cell:CardsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cardsCell", for: indexPath) as! CardsCell
         cell.text = card?.question
         cell.isActive = card?.active
         cell.cardId = card?.id
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let card = self.cards[indexPath.row]
+        self.onCard(card!)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

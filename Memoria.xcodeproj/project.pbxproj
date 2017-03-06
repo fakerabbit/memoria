@@ -36,6 +36,8 @@
 		ACB57EBE1E6CC8AA0079978B /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB57EBD1E6CC8AA0079978B /* CardsView.swift */; };
 		ACEFC5681E6DD3D900525B20 /* CardsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5671E6DD3D900525B20 /* CardsCell.swift */; };
 		ACEFC56A1E6DE8F800525B20 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5691E6DE8F800525B20 /* Switch.swift */; };
+		ACEFC56D1E6E0FF700525B20 /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC56C1E6E0FF700525B20 /* CardVC.swift */; };
+		ACEFC56F1E6E0FFF00525B20 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC56E1E6E0FFF00525B20 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		ACB57EBD1E6CC8AA0079978B /* CardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsView.swift; sourceTree = "<group>"; };
 		ACEFC5671E6DD3D900525B20 /* CardsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsCell.swift; sourceTree = "<group>"; };
 		ACEFC5691E6DE8F800525B20 /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
+		ACEFC56C1E6E0FF700525B20 /* CardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
+		ACEFC56E1E6E0FFF00525B20 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,7 @@
 			children = (
 				AC7CDB691E67C7B60025FEFE /* Assets */,
 				AC7CDB711E67CC340025FEFE /* Core */,
+				ACEFC56B1E6E0FD400525B20 /* Edit Card */,
 				ACB57EBA1E6CB58C0079978B /* Cards Screen */,
 				AC2566411E6A064F0056895D /* Create Card */,
 				AC7CDB701E67CC1A0025FEFE /* Learn Screen */,
@@ -174,6 +179,15 @@
 				ACEFC5691E6DE8F800525B20 /* Switch.swift */,
 			);
 			name = "Cards Screen";
+			sourceTree = "<group>";
+		};
+		ACEFC56B1E6E0FD400525B20 /* Edit Card */ = {
+			isa = PBXGroup;
+			children = (
+				ACEFC56C1E6E0FF700525B20 /* CardVC.swift */,
+				ACEFC56E1E6E0FFF00525B20 /* CardView.swift */,
+			);
+			name = "Edit Card";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +274,7 @@
 				AC9CBB4D1E64E4EA00C634F3 /* MemoriaVC.swift in Sources */,
 				AC5692D71E691A6E004EFC73 /* CircleBtn.swift in Sources */,
 				AC2566401E69E5910056895D /* CircleTextView.swift in Sources */,
+				ACEFC56D1E6E0FF700525B20 /* CardVC.swift in Sources */,
 				ACEFC56A1E6DE8F800525B20 /* Switch.swift in Sources */,
 				AC9CBB4F1E64E4EA00C634F3 /* LearnVC.swift in Sources */,
 				ACB57EBC1E6CC8950079978B /* CardsVC.swift in Sources */,
@@ -270,6 +285,7 @@
 				AC34D5C41E68B4DB00120C62 /* RoundTextView.swift in Sources */,
 				AC9CBB391E64E2F800C634F3 /* Memoria.xcdatamodeld in Sources */,
 				AC2566451E6A06760056895D /* CreateCardView.swift in Sources */,
+				ACEFC56F1E6E0FFF00525B20 /* CardView.swift in Sources */,
 				AC9CBB311E64E2F700C634F3 /* AppDelegate.swift in Sources */,
 				AC34D5C61E68E61300120C62 /* Extensions.swift in Sources */,
 				AC9CBB501E64E4EA00C634F3 /* LearnView.swift in Sources */,
