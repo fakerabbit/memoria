@@ -13,6 +13,9 @@ class CardsView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     typealias CardsViewOnCard = (Card) -> Void
     var onCard: CardsViewOnCard = { card in }
+    typealias CardsViewOnAdd = (CardsView) -> Void
+    var onAdd: CardsViewOnAdd = { view in }
+    
     
     var cards:[Card?]! {
         didSet {
@@ -61,6 +64,7 @@ class CardsView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         cv.dataSource = self
         cv.delegate = self
         cv.register(CardsCell.classForCoder(), forCellWithReuseIdentifier: "cardsCell")
+        cv.register(CardsHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "cardsHeader")
         return cv
     }()
     
@@ -143,5 +147,30 @@ class CardsView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        var reusableView: UICollectionReusableView?
+        
+        if kind == UICollectionElementKindSectionFooter {
+            
+            let header:CardsHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "cardsHeader", for: indexPath) as! CardsHeader
+            header.addBtn.addTarget(self, action: #selector(onAdd(_:)), for: .touchUpInside)
+            reusableView = header
+        }
+        
+        return reusableView!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        return CGSize(width: collectionView.frame.size.width, height: 100)
+    }
+    
+    // MARK:- Private
+    
+    func onAdd(_ sender : UIButton) {
+        self.onAdd(self)
     }
 }

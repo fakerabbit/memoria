@@ -12,6 +12,7 @@ import UIKit
 class CreateCardVC: UIViewController {
     
     var nav:NavController?
+    var inCardScreen:Bool = false
     
     lazy var createView:CreateCardView! = {
         let frame = UIScreen.main.bounds
@@ -112,8 +113,14 @@ class CreateCardVC: UIViewController {
     }
     
     func goToCardScreen(category: Category) {
-        DataMgr.sharedInstance.getCardsForCategory(category: category) { cards in
-            (self.nav?.goToCardAfterCreate(vc: self, cards: cards as! [Card]))!
+        
+        if self.inCardScreen == true {
+            self.dismiss(animated: true, completion: nil)
+        }
+        else {
+            DataMgr.sharedInstance.getCardsForCategory(category: category) { cards in
+                (self.nav?.goToCardAfterCreate(vc: self, cards: cards as! [Card]))!
+            }
         }
     }
 }

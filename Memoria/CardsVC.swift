@@ -37,6 +37,13 @@ class CardsVC: MemoriaVC {
             vc.card = card
             self?.present(vc, animated: true, completion: nil)
         }
+        cardsView.onAdd = { [weak self] _ in
+            
+            let vc = CreateCardVC()
+            vc.nav = self?.nav
+            vc.inCardScreen = true
+            self?.present(vc, animated: true, completion: nil)
+        }
         let card: Card = cards.first!!
         category = card.category
     }
