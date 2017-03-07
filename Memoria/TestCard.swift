@@ -63,4 +63,9 @@ class TestCard: UIView {
         
         UIView.transition(from: frontCard, to: backCard, duration: 1.0, options: .transitionFlipFromRight, completion: callback)
     }
+    
+    func animateCard(frontCard: TestCard, backCard: TestCard, callback: ((Bool) -> Void)?) {
+        
+        UIView.transition(from: frontCard, to: backCard, duration: 1.0, options: .transitionFlipFromTop, completion: callback)
+    }
 }

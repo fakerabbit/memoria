@@ -35,7 +35,7 @@ class TestView: UIView {
         b.title = "Easy"
         b.isHidden = true
         b.isUserInteractionEnabled = false
-        //b.addTarget(self, action: #selector(onShowAnswer(_:)), for: .touchUpInside)
+        b.tag = 1
         return b
     }()
     
@@ -44,7 +44,7 @@ class TestView: UIView {
         b.title = "Good"
         b.isHidden = true
         b.isUserInteractionEnabled = false
-        //b.addTarget(self, action: #selector(onShowAnswer(_:)), for: .touchUpInside)
+        b.tag = 2
         return b
     }()
     
@@ -53,7 +53,7 @@ class TestView: UIView {
         b.title = "Hard"
         b.isHidden = true
         b.isUserInteractionEnabled = false
-       // b.addTarget(self, action: #selector(onShowAnswer(_:)), for: .touchUpInside)
+        b.tag = 3
         return b
     }()
     
@@ -149,18 +149,38 @@ class TestView: UIView {
     
     func onShowAnswer(_ sender : UIButton) {
         
-        self.card.flipToView(frontCard: frontCard, backCard: backCard) { [weak self] finished in
-            
-            self?.title = "Answer"
-            self?.showAnswerBtn.isHidden = true
-            self?.showAnswerBtn.isUserInteractionEnabled = false
-            self?.easyBtn.isHidden = false
-            self?.easyBtn.isUserInteractionEnabled = true
-            self?.goodBtn.isHidden = false
-            self?.goodBtn.isUserInteractionEnabled = true
-            self?.hardBtn.isHidden = false
-            self?.hardBtn.isUserInteractionEnabled = true
+        if backCard.text == nil {
+            self.onClose(self)
         }
+        else {
+            self.card.flipToView(frontCard: frontCard, backCard: backCard) { [weak self] finished in
+                
+                self?.title = "Answer"
+                self?.showAnswerBtn.isHidden = true
+                self?.showAnswerBtn.isUserInteractionEnabled = false
+                self?.easyBtn.isHidden = false
+                self?.easyBtn.isUserInteractionEnabled = true
+                self?.goodBtn.isHidden = false
+                self?.goodBtn.isUserInteractionEnabled = true
+                self?.hardBtn.isHidden = false
+                self?.hardBtn.isUserInteractionEnabled = true
+            }
+        }
+    }
+    
+    func onNextCard() {
+        
+        self.card.animateCard(frontCard: backCard, backCard: frontCard, callback: { [weak self] finished in
+            
+            self?.showAnswerBtn.isHidden = false
+            self?.showAnswerBtn.isUserInteractionEnabled = true
+            self?.easyBtn.isHidden = true
+            self?.easyBtn.isUserInteractionEnabled = false
+            self?.goodBtn.isHidden = true
+            self?.goodBtn.isUserInteractionEnabled = false
+            self?.hardBtn.isHidden = true
+            self?.hardBtn.isUserInteractionEnabled = false
+        })
     }
     
     // MARK:- Animations
