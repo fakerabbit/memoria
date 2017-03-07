@@ -43,6 +43,14 @@ class CreateCardVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK:- Private
     
     func onCreateCard(_ sender : UIButton) {

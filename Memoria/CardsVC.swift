@@ -45,6 +45,16 @@ class CardsVC: MemoriaVC {
             self?.present(vc, animated: true, completion: nil)
         }
         cardsView.onPractice = { view in
+            
+            let vc = TestVC()
+            vc.nav = self.nav
+            var c: [Card?] = []
+            for i in 0 ..< self.cards.count {
+                let cd: Card = self.cards[i]!
+                c.append(cd)
+            }
+            vc.cards = c
+            self.present(vc, animated: true, completion: nil)
         }
         let card: Card = cards.first!!
         category = card.category

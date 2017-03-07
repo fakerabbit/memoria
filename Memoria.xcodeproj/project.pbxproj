@@ -41,6 +41,10 @@
 		ACEFC5711E6E21C300525B20 /* CardsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5701E6E21C300525B20 /* CardsFooter.swift */; };
 		ACEFC5731E6E392200525B20 /* CardsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5721E6E392200525B20 /* CardsHeader.swift */; };
 		ACEFC5751E6E3B0500525B20 /* BoldButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5741E6E3B0500525B20 /* BoldButton.swift */; };
+		ACEFC5781E6E411000525B20 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5771E6E411000525B20 /* TestVC.swift */; };
+		ACEFC57A1E6E411800525B20 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5791E6E411800525B20 /* TestView.swift */; };
+		ACEFC57C1E6E41CC00525B20 /* TestCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC57B1E6E41CC00525B20 /* TestCard.swift */; };
+		ACEFC57E1E6E5AF600525B20 /* TestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC57D1E6E5AF600525B20 /* TestButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +84,10 @@
 		ACEFC5701E6E21C300525B20 /* CardsFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsFooter.swift; sourceTree = "<group>"; };
 		ACEFC5721E6E392200525B20 /* CardsHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsHeader.swift; sourceTree = "<group>"; };
 		ACEFC5741E6E3B0500525B20 /* BoldButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoldButton.swift; sourceTree = "<group>"; };
+		ACEFC5771E6E411000525B20 /* TestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
+		ACEFC5791E6E411800525B20 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		ACEFC57B1E6E41CC00525B20 /* TestCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCard.swift; sourceTree = "<group>"; };
+		ACEFC57D1E6E5AF600525B20 /* TestButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +171,7 @@
 			children = (
 				AC7CDB691E67C7B60025FEFE /* Assets */,
 				AC7CDB711E67CC340025FEFE /* Core */,
+				ACEFC5761E6E40E500525B20 /* Test Screen */,
 				ACEFC56B1E6E0FD400525B20 /* Edit Card */,
 				ACB57EBA1E6CB58C0079978B /* Cards Screen */,
 				AC2566411E6A064F0056895D /* Create Card */,
@@ -197,6 +206,17 @@
 				ACEFC56E1E6E0FFF00525B20 /* CardView.swift */,
 			);
 			name = "Edit Card";
+			sourceTree = "<group>";
+		};
+		ACEFC5761E6E40E500525B20 /* Test Screen */ = {
+			isa = PBXGroup;
+			children = (
+				ACEFC5771E6E411000525B20 /* TestVC.swift */,
+				ACEFC5791E6E411800525B20 /* TestView.swift */,
+				ACEFC57B1E6E41CC00525B20 /* TestCard.swift */,
+				ACEFC57D1E6E5AF600525B20 /* TestButton.swift */,
+			);
+			name = "Test Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,8 +294,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACEFC57A1E6E411800525B20 /* TestView.swift in Sources */,
 				ACB57EBE1E6CC8AA0079978B /* CardsView.swift in Sources */,
 				AC9CBB4C1E64E4EA00C634F3 /* Utils.swift in Sources */,
+				ACEFC57C1E6E41CC00525B20 /* TestCard.swift in Sources */,
 				AC25664B1E6A12F20056895D /* LineTextField.swift in Sources */,
 				AC9CBB4E1E64E4EA00C634F3 /* NavController.swift in Sources */,
 				AC9CBB4B1E64E4EA00C634F3 /* DataMgr.swift in Sources */,
@@ -284,7 +306,9 @@
 				AC5692D71E691A6E004EFC73 /* CircleBtn.swift in Sources */,
 				AC2566401E69E5910056895D /* CircleTextView.swift in Sources */,
 				ACEFC56D1E6E0FF700525B20 /* CardVC.swift in Sources */,
+				ACEFC5781E6E411000525B20 /* TestVC.swift in Sources */,
 				ACEFC56A1E6DE8F800525B20 /* Switch.swift in Sources */,
+				ACEFC57E1E6E5AF600525B20 /* TestButton.swift in Sources */,
 				AC9CBB4F1E64E4EA00C634F3 /* LearnVC.swift in Sources */,
 				ACEFC5711E6E21C300525B20 /* CardsFooter.swift in Sources */,
 				ACB57EBC1E6CC8950079978B /* CardsVC.swift in Sources */,
