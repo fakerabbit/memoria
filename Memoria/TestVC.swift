@@ -57,7 +57,8 @@ class TestVC: UIViewController {
         var testCards:[Card?] = self.cards.shuffled()
         let card: Card? = testCards.popLast()!
         self.testView.title = "Question"
-        self.testView.card.text = card?.question
+        self.testView.frontCard.text = card?.question
+        self.testView.backCard.text = card?.answer
         
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import QuartzCore
 
 class TestView: UIView {
     
@@ -25,6 +26,34 @@ class TestView: UIView {
     lazy var showAnswerBtn: TestButton! = {
        let b = TestButton(frame: CGRect.zero)
         b.title = "Show Answer"
+        b.addTarget(self, action: #selector(onShowAnswer(_:)), for: .touchUpInside)
+        return b
+    }()
+    
+    lazy var easyBtn: TestButton! = {
+        let b = TestButton(frame: CGRect.zero)
+        b.title = "Easy"
+        b.isHidden = true
+        b.isUserInteractionEnabled = false
+        //b.addTarget(self, action: #selector(onShowAnswer(_:)), for: .touchUpInside)
+        return b
+    }()
+    
+    lazy var goodBtn: TestButton! = {
+        let b = TestButton(frame: CGRect.zero)
+        b.title = "Good"
+        b.isHidden = true
+        b.isUserInteractionEnabled = false
+        //b.addTarget(self, action: #selector(onShowAnswer(_:)), for: .touchUpInside)
+        return b
+    }()
+    
+    lazy var hardBtn: TestButton! = {
+        let b = TestButton(frame: CGRect.zero)
+        b.title = "Hard"
+        b.isHidden = true
+        b.isUserInteractionEnabled = false
+       // b.addTarget(self, action: #selector(onShowAnswer(_:)), for: .touchUpInside)
         return b
     }()
     
@@ -44,7 +73,17 @@ class TestView: UIView {
         return b
     }()
     
-    lazy var card: TestCard! = {
+    lazy var frontCard: TestCard! = {
+        let c = TestCard(frame: CGRect.zero)
+        return c
+    }()
+    
+    lazy var backCard: TestCard! = {
+        let c = TestCard(frame: CGRect.zero)
+        return c
+    }()
+    
+    private lazy var card: TestCard! = {
         let c = TestCard(frame: CGRect.zero)
         return c
     }()
@@ -70,6 +109,10 @@ class TestView: UIView {
         self.addSubview(titleLbl)
         self.addSubview(closeBtn)
         self.addSubview(showAnswerBtn)
+        self.addSubview(easyBtn)
+        self.addSubview(goodBtn)
+        self.addSubview(hardBtn)
+        card.addSubview(frontCard)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -84,12 +127,18 @@ class TestView: UIView {
         let pad: CGFloat = 30.0
         let cardH: CGFloat = h/2
         let showS: CGFloat = 140
+        let smallBtnS: CGFloat = showS/2
         let btnH: CGFloat = 50
         gradientLayer.frame = self.bounds
         card.frame = CGRect(x: pad, y: h/2 - cardH/2, width: w - pad * 2, height: cardH)
+        frontCard.frame = card.bounds
+        backCard.frame = card.bounds
         closeBtn.frame = CGRect(x: w - (pad + btnS), y: card.frame.minY - btnS, width: btnS, height: btnS)
         titleLbl.frame = CGRect(x: pad, y: closeBtn.frame.midY - titleLbl.frame.size.height/2, width: closeBtn.frame.minX - pad, height: titleLbl.frame.size.height)
         showAnswerBtn.frame = CGRect(x: w/2 - showS/2, y: card.frame.maxY + 10, width: showS, height: btnH)
+        goodBtn.frame = CGRect(x: w/2 - smallBtnS/2, y: showAnswerBtn.frame.minY, width: smallBtnS, height: btnH)
+        easyBtn.frame = CGRect(x: w * 0.25 - smallBtnS/2, y: goodBtn.frame.minY, width: smallBtnS, height: btnH)
+        hardBtn.frame = CGRect(x: goodBtn.frame.minX + (goodBtn.frame.minX - easyBtn.frame.minX), y: goodBtn.frame.minY, width: smallBtnS, height: btnH)
     }
     
     // MARK:- Private
@@ -99,12 +148,25 @@ class TestView: UIView {
     }
     
     func onShowAnswer(_ sender : UIButton) {
+        
+        self.card.flipToView(frontCard: frontCard, backCard: backCard) { [weak self] finished in
+            
+            self?.title = "Answer"
+            self?.showAnswerBtn.isHidden = true
+            self?.showAnswerBtn.isUserInteractionEnabled = false
+            self?.easyBtn.isHidden = false
+            self?.easyBtn.isUserInteractionEnabled = true
+            self?.goodBtn.isHidden = false
+            self?.goodBtn.isUserInteractionEnabled = true
+            self?.hardBtn.isHidden = false
+            self?.hardBtn.isUserInteractionEnabled = true
+        }
     }
     
     // MARK:- Animations
     
     func randomColors() -> [CGColor] {
-        let colors = [Utils.aquaColor().cgColor, Utils.blueShadowColor().cgColor]
+        let colors = [Utils.cardColor().cgColor, Utils.cardAlternateColor().cgColor, Utils.backgroundColor().cgColor]
         return colors.shuffled()
     }
     

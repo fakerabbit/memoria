@@ -27,7 +27,7 @@ class TestButton: UIButton {
         self.backgroundColor = Utils.blueShadowColor()
         self.layer.cornerRadius = 18.0
         self.layer.borderWidth = 1
-        self.layer.borderColor = Utils.aquaColor().cgColor
+        self.layer.borderColor = Utils.cardAlternateColor().cgColor
         self.clipsToBounds = true
         self.setTitleColor(Utils.textColor(), for: .normal)
     }
@@ -40,7 +40,7 @@ class TestButton: UIButton {
         didSet {
             switch isHighlighted {
             case true:
-                self.backgroundColor = Utils.aquaColor()
+                self.backgroundColor = Utils.cardAlternateColor()
             case false:
                 self.backgroundColor = Utils.blueShadowColor()
             }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC094F6F1E6F1172006D87F9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC094F6E1E6F1172006D87F9 /* QuartzCore.framework */; };
 		AC2566401E69E5910056895D /* CircleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25663F1E69E5910056895D /* CircleTextView.swift */; };
 		AC2566431E6A066C0056895D /* CreateCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2566421E6A066C0056895D /* CreateCardVC.swift */; };
 		AC2566451E6A06760056895D /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2566441E6A06760056895D /* CreateCardView.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC094F6E1E6F1172006D87F9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AC25663F1E69E5910056895D /* CircleTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTextView.swift; sourceTree = "<group>"; };
 		AC2566421E6A066C0056895D /* CreateCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardVC.swift; sourceTree = "<group>"; };
 		AC2566441E6A06760056895D /* CreateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
@@ -95,12 +97,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC094F6F1E6F1172006D87F9 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC094F6D1E6F1172006D87F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC094F6E1E6F1172006D87F9 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AC2566411E6A064F0056895D /* Create Card */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +166,7 @@
 			children = (
 				AC9CBB2F1E64E2F700C634F3 /* Memoria */,
 				AC9CBB2E1E64E2F700C634F3 /* Products */,
+				AC094F6D1E6F1172006D87F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

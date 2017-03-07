@@ -37,7 +37,7 @@ class TestCard: UIView {
         self.backgroundColor = UIColor.white
         self.layer.shadowOpacity = 1.0
         self.layer.cornerRadius = 24.0
-        self.layer.borderColor = Utils.aquaColor().cgColor
+        self.layer.borderColor = Utils.cardAlternateColor().cgColor
         self.layer.borderWidth = 1
         self.clipsToBounds = true
         
@@ -55,5 +55,12 @@ class TestCard: UIView {
         let h = self.frame.size.height
         let textS: CGSize = textView.sizeThatFits(CGSize(width: w, height: h))
         self.textView.frame = CGRect(x: w/2 - textS.width/2, y: h/2 - textS.height/2, width: textS.width, height: textS.height)
+    }
+    
+    // MARK:- Animations
+    
+    func flipToView(frontCard: TestCard, backCard: TestCard, callback: ((Bool) -> Void)?) {
+        
+        UIView.transition(from: frontCard, to: backCard, duration: 1.0, options: .transitionFlipFromRight, completion: callback)
     }
 }
