@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class CardsHeader: UICollectionReusableView {
+class CardsFooter: UICollectionReusableView {
     
-    lazy var practiceBtn: BoldButton! = {
-        let b = BoldButton(frame: CGRect.zero)
-        b.title = "practice now"
-        return b
+    lazy var addBtn: CircleBtn! = {
+        let btn = CircleBtn(frame: CGRect.zero)
+        btn.title = "+"
+        return btn
     }()
     
     // MARK:- Init
@@ -22,7 +22,7 @@ class CardsHeader: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
-        self.addSubview(practiceBtn)
+        self.addSubview(addBtn)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,7 +35,7 @@ class CardsHeader: UICollectionReusableView {
         super.layoutSubviews()
         let w = self.frame.size.width
         let h = self.frame.size.height
-        let btnS: CGFloat = 50
-        practiceBtn.frame = CGRect(x: w/2 - practiceBtn.frame.size.width/2, y: h/2 - btnS/2, width: practiceBtn.frame.size.width, height: btnS)
+        let btnS: CGFloat = 70
+        addBtn.frame = CGRect(x: w/2 - btnS/2, y: h/2 - btnS/2, width: btnS, height: btnS)
     }
 }

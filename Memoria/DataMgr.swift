@@ -38,6 +38,8 @@ class DataMgr {
     typealias FristCategoryMgrCallback = (Category) -> Void
     typealias CardsMgrCallback = ([Card?]) -> Void
     
+    // MARK:- Data Operations
+    
     func fetchCategories(callback: @escaping CategoryMgrCallback) {
         
         var categories:[Category] = []

@@ -44,6 +44,8 @@ class CardsVC: MemoriaVC {
             vc.inCardScreen = true
             self?.present(vc, animated: true, completion: nil)
         }
+        cardsView.onPractice = { view in
+        }
         let card: Card = cards.first!!
         category = card.category
     }

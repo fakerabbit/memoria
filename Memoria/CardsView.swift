@@ -15,7 +15,7 @@ class CardsView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
     var onCard: CardsViewOnCard = { card in }
     typealias CardsViewOnAdd = (CardsView) -> Void
     var onAdd: CardsViewOnAdd = { view in }
-    
+    var onPractice: CardsViewOnAdd = { view in }
     
     var cards:[Card?]! {
         didSet {
@@ -64,7 +64,8 @@ class CardsView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         cv.dataSource = self
         cv.delegate = self
         cv.register(CardsCell.classForCoder(), forCellWithReuseIdentifier: "cardsCell")
-        cv.register(CardsHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "cardsHeader")
+        cv.register(CardsFooter.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "cardsFooter")
+        cv.register(CardsHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "cardsHeader")
         return cv
     }()
     
@@ -155,8 +156,14 @@ class CardsView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         
         if kind == UICollectionElementKindSectionFooter {
             
-            let header:CardsHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "cardsHeader", for: indexPath) as! CardsHeader
-            header.addBtn.addTarget(self, action: #selector(onAdd(_:)), for: .touchUpInside)
+            let footer:CardsFooter = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "cardsFooter", for: indexPath) as! CardsFooter
+            footer.addBtn.addTarget(self, action: #selector(onAdd(_:)), for: .touchUpInside)
+            reusableView = footer
+        }
+        else if kind == UICollectionElementKindSectionHeader {
+            
+            let header:CardsHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "cardsHeader", for: indexPath) as! CardsHeader
+            header.practiceBtn.addTarget(self, action: #selector(onPractice(_:)), for: .touchUpInside)
             reusableView = header
         }
         
@@ -168,9 +175,18 @@ class CardsView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, U
         return CGSize(width: collectionView.frame.size.width, height: 100)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize(width: collectionView.frame.size.width, height: 80)
+    }
+    
     // MARK:- Private
     
     func onAdd(_ sender : UIButton) {
         self.onAdd(self)
+    }
+    
+    func onPractice(_ sender: UIButton) {
+        self.onPractice(self)
     }
 }

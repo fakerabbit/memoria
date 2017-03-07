@@ -38,7 +38,9 @@
 		ACEFC56A1E6DE8F800525B20 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5691E6DE8F800525B20 /* Switch.swift */; };
 		ACEFC56D1E6E0FF700525B20 /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC56C1E6E0FF700525B20 /* CardVC.swift */; };
 		ACEFC56F1E6E0FFF00525B20 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC56E1E6E0FFF00525B20 /* CardView.swift */; };
-		ACEFC5711E6E21C300525B20 /* CardsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5701E6E21C300525B20 /* CardsHeader.swift */; };
+		ACEFC5711E6E21C300525B20 /* CardsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5701E6E21C300525B20 /* CardsFooter.swift */; };
+		ACEFC5731E6E392200525B20 /* CardsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5721E6E392200525B20 /* CardsHeader.swift */; };
+		ACEFC5751E6E3B0500525B20 /* BoldButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFC5741E6E3B0500525B20 /* BoldButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +77,9 @@
 		ACEFC5691E6DE8F800525B20 /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		ACEFC56C1E6E0FF700525B20 /* CardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
 		ACEFC56E1E6E0FFF00525B20 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		ACEFC5701E6E21C300525B20 /* CardsHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsHeader.swift; sourceTree = "<group>"; };
+		ACEFC5701E6E21C300525B20 /* CardsFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsFooter.swift; sourceTree = "<group>"; };
+		ACEFC5721E6E392200525B20 /* CardsHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsHeader.swift; sourceTree = "<group>"; };
+		ACEFC5741E6E3B0500525B20 /* BoldButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoldButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,8 +182,10 @@
 				ACB57EBB1E6CC8950079978B /* CardsVC.swift */,
 				ACB57EBD1E6CC8AA0079978B /* CardsView.swift */,
 				ACEFC5671E6DD3D900525B20 /* CardsCell.swift */,
-				ACEFC5701E6E21C300525B20 /* CardsHeader.swift */,
+				ACEFC5721E6E392200525B20 /* CardsHeader.swift */,
+				ACEFC5701E6E21C300525B20 /* CardsFooter.swift */,
 				ACEFC5691E6DE8F800525B20 /* Switch.swift */,
+				ACEFC5741E6E3B0500525B20 /* BoldButton.swift */,
 			);
 			name = "Cards Screen";
 			sourceTree = "<group>";
@@ -280,7 +286,7 @@
 				ACEFC56D1E6E0FF700525B20 /* CardVC.swift in Sources */,
 				ACEFC56A1E6DE8F800525B20 /* Switch.swift in Sources */,
 				AC9CBB4F1E64E4EA00C634F3 /* LearnVC.swift in Sources */,
-				ACEFC5711E6E21C300525B20 /* CardsHeader.swift in Sources */,
+				ACEFC5711E6E21C300525B20 /* CardsFooter.swift in Sources */,
 				ACB57EBC1E6CC8950079978B /* CardsVC.swift in Sources */,
 				AC34D5C21E68AEFB00120C62 /* LearnCell.swift in Sources */,
 				AC2566431E6A066C0056895D /* CreateCardVC.swift in Sources */,
@@ -290,11 +296,13 @@
 				AC9CBB391E64E2F800C634F3 /* Memoria.xcdatamodeld in Sources */,
 				AC2566451E6A06760056895D /* CreateCardView.swift in Sources */,
 				ACEFC56F1E6E0FFF00525B20 /* CardView.swift in Sources */,
+				ACEFC5731E6E392200525B20 /* CardsHeader.swift in Sources */,
 				AC9CBB311E64E2F700C634F3 /* AppDelegate.swift in Sources */,
 				AC34D5C61E68E61300120C62 /* Extensions.swift in Sources */,
 				AC9CBB501E64E4EA00C634F3 /* LearnView.swift in Sources */,
 				AC2566491E6A0AD40056895D /* PlainBtn.swift in Sources */,
 				AC765DEF1E6BB65800D01254 /* LineCancelTextField.swift in Sources */,
+				ACEFC5751E6E3B0500525B20 /* BoldButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
