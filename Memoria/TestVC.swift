@@ -20,6 +20,9 @@ class TestVC: UIViewController {
         return v
     }()
     
+    private var currentCard: Card!
+    private var testCards:[Card?]! = []
+    
     // MARK:- View methods
     
     override func loadView() {
@@ -57,27 +60,33 @@ class TestVC: UIViewController {
     
     private func startTest() {
         
-        let card: Card? = self.cards.popLast()!
+        self.testCards = cards.shuffled()
+        currentCard = self.testCards.first!
         self.testView.title = "Question"
-        self.testView.frontCard.text = card?.question
-        self.testView.backCard.text = card?.answer
+        self.testView.frontCard.text = currentCard.question
+        self.testView.backCard.text = currentCard.answer
     }
     
     func onDifficulty(_ sender: UIButton) {
         
-        if self.cards.count > 0 {
-            self.testView.onNextCard()
-            let card: Card? = self.cards.popLast()!
-            self.testView.title = "Question"
-            self.testView.frontCard.text = card?.question
-            self.testView.backCard.text = card?.answer
-        }
-        else {
-            self.testView.onNextCard()
-            self.testView.title = "Test completed"
-            self.testView.frontCard.text = "Congrats!"
-            self.testView.backCard.text = nil
-            self.testView.showAnswerBtn.title = "Done"
+        DataMgr.sharedInstance.evaluateCard(card: currentCard, difficulty: sender.tag, testCards: testCards) { [weak self] updatedCards in
+            
+            if updatedCards.count > 0 {
+                self?.testView.onNextCard()
+                self?.currentCard = updatedCards.first!
+                self?.testCards = updatedCards.shuffled()
+                self?.testView.title = "Question"
+                self?.testView.frontCard.text = self?.currentCard.question
+                self?.testView.backCard.text = self?.currentCard.answer
+            }
+            else {
+                self?.testView.onNextCard()
+                self?.testCards = updatedCards.shuffled()
+                self?.testView.title = "Test completed"
+                self?.testView.frontCard.text = "Congrats!"
+                self?.testView.backCard.text = nil
+                self?.testView.showAnswerBtn.title = "Done"
+            }
         }
     }
 }

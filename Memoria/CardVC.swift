@@ -86,7 +86,7 @@ class CardVC: UIViewController {
             else {
                 let category:Category = Category(name: cardView.card.catTfld.text, width: 0, active: true)
                 DataMgr.sharedInstance.saveCategory(category: category) { [weak self] category in
-                    let newCard = Card(id: (self?.card.id)!, question: (self?.cardView.card.qTfld.text!)!, answer: self?.cardView.card.aTfld.text, category: category.name, active: (self?.card.active)!)
+                    let newCard = Card(id: (self?.card.id)!, question: (self?.cardView.card.qTfld.text!)!, answer: self?.cardView.card.aTfld.text, category: category.name, active: (self?.card.active)!, tries: 0)
                     DataMgr.sharedInstance.updateCard(card: newCard) { [weak self] cardUpdated in
                         if cardUpdated == nil {
                             let action = UIAlertAction(title: "Ok", style: .destructive, handler: {(alert: UIAlertAction!) in
@@ -105,7 +105,7 @@ class CardVC: UIViewController {
         else {
             let category:Category = Category(name: cardView.card.catBtn.title, width: 0, active: true)
             DataMgr.sharedInstance.saveCategory(category: category) { [weak self] category in
-                let newCard = Card(id: (self?.card.id)!, question: (self?.cardView.card.qTfld.text!)!, answer: self?.cardView.card.aTfld.text, category: category.name, active: (self?.card.active)!)
+                let newCard = Card(id: (self?.card.id)!, question: (self?.cardView.card.qTfld.text!)!, answer: self?.cardView.card.aTfld.text, category: category.name, active: (self?.card.active)!, tries: 0)
                 DataMgr.sharedInstance.updateCard(card: newCard) { [weak self] cardUpdated in
                     if cardUpdated == nil {
                         let action = UIAlertAction(title: "Ok", style: .destructive, handler: {(alert: UIAlertAction!) in

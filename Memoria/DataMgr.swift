@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import UserNotifications
 
 struct Category {
     var name: String?
@@ -22,6 +23,11 @@ struct Card {
     var answer: String?
     var category: String?
     var active: Bool = true
+    var tries: Int = 0
+}
+
+enum Difficulty:Int {
+    case easy = 1, good, hard
 }
 
 class DataMgr {
@@ -32,11 +38,66 @@ class DataMgr {
     static let kCardEntityName = "Card"
     static let kCategoryEntityName = "Category"
     
-    
     typealias CardMgrCallback = (Card?) -> Void
     typealias CategoryMgrCallback = ([Category?]) -> Void
     typealias FristCategoryMgrCallback = (Category) -> Void
     typealias CardsMgrCallback = ([Card?]) -> Void
+    
+    // MARK:- Game Operations
+    
+    func evaluateCard(card: Card, difficulty: Int, testCards: [Card?], callback: CardsMgrCallback) {
+        
+        var updatedCards:[Card?] = []
+        
+        for i in 0 ..< testCards.count {
+            let c:Card = testCards[i]!
+            if c.id != card.id {
+                updatedCards.append(c)
+            }
+        }
+        
+        programCard(card: card, difficulty: difficulty)
+        
+        callback(updatedCards)
+    }
+    
+    func programCard(card: Card, difficulty: Int) {
+        
+        let center = UNUserNotificationCenter.current()
+        let identifier = "UYLLocalNotification"
+        
+        var date = Date()
+        switch difficulty {
+        case Difficulty.easy.rawValue:
+            date = date.addingTimeInterval(240)
+            break
+        case Difficulty.good.rawValue:
+            date = date.addingTimeInterval(600)
+            break
+        case Difficulty.hard.rawValue:
+            date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+            break
+        default:
+            date = date.addingTimeInterval(60)
+        }
+        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        
+        let content = UNMutableNotificationContent()
+        content.title = card.category!
+        content.body = card.question
+        content.sound = UNNotificationSound.default()
+        
+        let request = UNNotificationRequest(identifier: identifier,
+                                            content: content, trigger: trigger)
+        
+        center.add(request, withCompletionHandler: { error in
+            if error != nil {
+                // Something went wrong
+                debugPrint("error adding notification to center")
+            }
+        })
+    }
     
     // MARK:- Data Operations
     
@@ -181,7 +242,7 @@ class DataMgr {
                 let cardArray:[ECard] = cat.cards?.allObjects as! [ECard]
                 for card: ECard in cardArray {
                     //debugPrint("card for cat: \(card.active)")
-                    let c = Card(id: card.id!,question: card.question!, answer: card.answer, category: cat.name, active: card.active)
+                    let c = Card(id: card.id!,question: card.question!, answer: card.answer, category: cat.name, active: card.active, tries: 0)
                     cards.append(c)
                 }
             }
@@ -206,7 +267,7 @@ class DataMgr {
                 let cardArray:[ECard] = cat.cards?.allObjects as! [ECard]
                 for card: ECard in cardArray {
                     card.active = active
-                    let c = Card(id: card.id!,question: card.question!, answer: card.answer, category: cat.name, active: card.active)
+                    let c = Card(id: card.id!,question: card.question!, answer: card.answer, category: cat.name, active: card.active, tries: 0)
                     cards.append(c)
                 }
             }
@@ -232,7 +293,7 @@ class DataMgr {
             if (results?.count)! > 0 {
                 let c:ECard = (results?.first)!
                 c.active = active
-                card = Card(id: c.id!, question: c.question!, answer: c.answer, category: c.category?.name, active: c.active)
+                card = Card(id: c.id!, question: c.question!, answer: c.answer, category: c.category?.name, active: c.active, tries: 0)
                 //debugPrint("updated card: \(c)")
             }
         }

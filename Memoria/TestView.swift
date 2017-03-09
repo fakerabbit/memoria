@@ -35,7 +35,7 @@ class TestView: UIView {
         b.title = "Easy"
         b.isHidden = true
         b.isUserInteractionEnabled = false
-        b.tag = 1
+        b.tag = Difficulty.easy.rawValue
         return b
     }()
     
@@ -44,7 +44,7 @@ class TestView: UIView {
         b.title = "Good"
         b.isHidden = true
         b.isUserInteractionEnabled = false
-        b.tag = 2
+        b.tag = Difficulty.good.rawValue
         return b
     }()
     
@@ -53,7 +53,7 @@ class TestView: UIView {
         b.title = "Hard"
         b.isHidden = true
         b.isUserInteractionEnabled = false
-        b.tag = 3
+        b.tag = Difficulty.hard.rawValue
         return b
     }()
     

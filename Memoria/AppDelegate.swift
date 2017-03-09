@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create window.
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.darkGray
+        
+        let center = UNUserNotificationCenter.current()
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge];
+        center.requestAuthorization(options: options) {
+            (granted, error) in
+            if !granted {
+                print("Something went wrong")
+                let action = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
+                let controller = UIAlertController(title: "Notifications permissions needed", message: "This app uses app notifications. Please allow notifications for this app in settings.", preferredStyle: .alert)
+                controller.addAction(action)
+                self.window?.rootViewController?.present(controller, animated: true, completion: nil)
+            }
+        }
+        center.getNotificationSettings { (settings) in
+            if settings.authorizationStatus != .authorized {
+                // Notifications not allowed
+                let action = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
+                let controller = UIAlertController(title: "Notifications permissions needed", message: "This app uses app notifications. Please allow notifications for this app in settings.", preferredStyle: .alert)
+                controller.addAction(action)
+                self.window?.rootViewController?.present(controller, animated: true, completion: nil)
+            }
+        }
         
         let vc = LearnVC()
         let nav:NavController = NavController(rootViewController: vc)

@@ -84,7 +84,7 @@ class CreateCardVC: UIViewController {
             else {
                 let category:Category = Category(name: createView.card.catTfld.text, width: 0, active: true)
                 DataMgr.sharedInstance.saveCategory(category: category) { [weak self] category in
-                    let card = Card(id: "", question: (self?.createView.card.qTfld.text!)!, answer: self?.createView.card.aTfld.text, category: category.name, active: true)
+                    let card = Card(id: "", question: (self?.createView.card.qTfld.text!)!, answer: self?.createView.card.aTfld.text, category: category.name, active: true, tries: 0)
                     DataMgr.sharedInstance.saveCard(card: card) { [weak self] card in
                         if card == nil {
                             let action = UIAlertAction(title: "Ok", style: .destructive, handler: {(alert: UIAlertAction!) in
@@ -103,7 +103,7 @@ class CreateCardVC: UIViewController {
         else {
             let category:Category = Category(name: createView.card.catBtn.title, width: 0, active: true)
             DataMgr.sharedInstance.saveCategory(category: category) { [weak self] category in
-                let card = Card(id: "", question: (self?.createView.card.qTfld.text!)!, answer: self?.createView.card.aTfld.text, category: category.name, active: true)
+                let card = Card(id: "", question: (self?.createView.card.qTfld.text!)!, answer: self?.createView.card.aTfld.text, category: category.name, active: true, tries: 0)
                 DataMgr.sharedInstance.saveCard(card: card) { [weak self] card in
                     if card == nil {
                         let action = UIAlertAction(title: "Ok", style: .destructive, handler: {(alert: UIAlertAction!) in
