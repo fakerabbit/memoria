@@ -56,7 +56,9 @@ class DataMgr {
             }
         }
         
-        programCard(card: card, difficulty: difficulty)
+        if card.active == true {
+            programCard(card: card, difficulty: difficulty)
+        }
         
         callback(updatedCards)
     }
@@ -80,13 +82,17 @@ class DataMgr {
         default:
             date = date.addingTimeInterval(60)
         }
-        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
+        var triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
+        triggerDate.timeZone = TimeZone.current
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
         
         let content = UNMutableNotificationContent()
         content.title = card.category!
         content.body = card.question
+        content.badge = 1
         content.sound = UNNotificationSound.default()
+        content.userInfo = Dictionary(dictionaryLiteral: ("cardId", card.id))
+        content.categoryIdentifier = "UYLReminderCategory"
         
         let request = UNNotificationRequest(identifier: identifier,
                                             content: content, trigger: trigger)
@@ -340,6 +346,29 @@ class DataMgr {
             debugPrint("error updating card: \(error.localizedDescription)")
         }
         self.saveContext()
+        callback(card)
+    }
+    
+    func fetchCard(for cardId: String, callback: @escaping CardMgrCallback) {
+        
+        var card:Card?
+        let request:NSFetchRequest<ECard> = ECard.fetchRequest()
+        let predicate = NSPredicate(format: "id == %@", cardId)
+        var results:[ECard]?
+        request.predicate = predicate
+        
+        do {
+            results = try self.managedObjectContext.fetch(request)
+            
+            if (results?.count)! > 0 {
+                let c:ECard = (results?.first)!
+                card = Card(id: cardId, question: c.question!, answer: c.answer, category: c.category?.name, active: c.active, tries: 0)
+            }
+        }
+        catch let error {
+            debugPrint("error fetching card: \(error.localizedDescription)")
+        }
+        
         callback(card)
     }
     

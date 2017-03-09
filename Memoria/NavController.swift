@@ -50,4 +50,13 @@ class NavController: UINavigationController {
         vc.cards = cards
         self.pushViewController(vc, animated: true)
     }
+    
+    func startTest(for card:Card) {
+        
+        self.popToRootViewController(animated: false)
+        let vc = TestVC()
+        vc.nav = self
+        vc.cards = [card]
+        self.present(vc, animated: true, completion: nil)
+    }
 }

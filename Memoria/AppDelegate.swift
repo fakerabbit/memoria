@@ -14,15 +14,25 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var nav:NavController!
+    let notificationDelegate = NotificationDelegate()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Create window.
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.darkGray
+        UIApplication.shared.applicationIconBadgeNumber = 0
         
         let center = UNUserNotificationCenter.current()
+        center.delegate = notificationDelegate
         let options: UNAuthorizationOptions = [.alert, .sound, .badge];
+        let practiceAction = UNNotificationAction(identifier: "Practice", title: "Practice", options: [])
+        let snoozeAction = UNNotificationAction(identifier: "Snooze",
+                                                title: "Snooze", options: [])
+        let category = UNNotificationCategory(identifier: "UYLReminderCategory",
+                                              actions: [practiceAction,snoozeAction],
+                                              intentIdentifiers: [], options: [])
+        center.setNotificationCategories([category])
         center.requestAuthorization(options: options) {
             (granted, error) in
             if !granted {
@@ -44,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let vc = LearnVC()
-        let nav:NavController = NavController(rootViewController: vc)
+        nav = NavController(rootViewController: vc)
         window?.rootViewController = nav
         
         if !window!.isKeyWindow {

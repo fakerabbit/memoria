@@ -18,6 +18,7 @@
 		AC34D5C41E68B4DB00120C62 /* RoundTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34D5C31E68B4DB00120C62 /* RoundTextView.swift */; };
 		AC34D5C61E68E61300120C62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34D5C51E68E61300120C62 /* Extensions.swift */; };
 		AC5692D71E691A6E004EFC73 /* CircleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5692D61E691A6E004EFC73 /* CircleBtn.swift */; };
+		AC72E0BC1E71CC6600AF9FA6 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72E0BB1E71CC6600AF9FA6 /* NotificationDelegate.swift */; };
 		AC765DEF1E6BB65800D01254 /* LineCancelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC765DEE1E6BB65800D01254 /* LineCancelTextField.swift */; };
 		AC7869551E6A1E44000087C5 /* SelectBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7869541E6A1E44000087C5 /* SelectBtn.swift */; };
 		AC7CDB6D1E67C7C30025FEFE /* Botdoh.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC7CDB6A1E67C7C30025FEFE /* Botdoh.otf */; };
@@ -60,6 +61,7 @@
 		AC34D5C31E68B4DB00120C62 /* RoundTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTextView.swift; sourceTree = "<group>"; };
 		AC34D5C51E68E61300120C62 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AC5692D61E691A6E004EFC73 /* CircleBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleBtn.swift; sourceTree = "<group>"; };
+		AC72E0BB1E71CC6600AF9FA6 /* NotificationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		AC765DEE1E6BB65800D01254 /* LineCancelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineCancelTextField.swift; sourceTree = "<group>"; };
 		AC7869541E6A1E44000087C5 /* SelectBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectBtn.swift; sourceTree = "<group>"; };
 		AC7CDB6A1E67C7C30025FEFE /* Botdoh.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Botdoh.otf; path = Assets/Fonts/Botdoh.otf; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				AC9CBB481E64E4EA00C634F3 /* NavController.swift */,
 				AC9CBB471E64E4EA00C634F3 /* MemoriaVC.swift */,
 				AC9CBB451E64E4EA00C634F3 /* DataMgr.swift */,
+				AC72E0BB1E71CC6600AF9FA6 /* NotificationDelegate.swift */,
 				AC34D5C31E68B4DB00120C62 /* RoundTextView.swift */,
 				AC34D5C51E68E61300120C62 /* Extensions.swift */,
 				AC5692D61E691A6E004EFC73 /* CircleBtn.swift */,
@@ -329,6 +332,7 @@
 				AC2566471E6A07F10056895D /* CreateCard.swift in Sources */,
 				ACEFC5681E6DD3D900525B20 /* CardsCell.swift in Sources */,
 				AC34D5C41E68B4DB00120C62 /* RoundTextView.swift in Sources */,
+				AC72E0BC1E71CC6600AF9FA6 /* NotificationDelegate.swift in Sources */,
 				AC9CBB391E64E2F800C634F3 /* Memoria.xcdatamodeld in Sources */,
 				AC2566451E6A06760056895D /* CreateCardView.swift in Sources */,
 				ACEFC56F1E6E0FFF00525B20 /* CardView.swift in Sources */,
