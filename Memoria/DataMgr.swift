@@ -66,21 +66,21 @@ class DataMgr {
     func programCard(card: Card, difficulty: Int) {
         
         let center = UNUserNotificationCenter.current()
-        let identifier = "UYLLocalNotification"
+        let identifier = NSUUID().uuidString
         
         var date = Date()
         switch difficulty {
-        case Difficulty.easy.rawValue:
+        case Difficulty.hard.rawValue:
             date = date.addingTimeInterval(240)
             break
         case Difficulty.good.rawValue:
             date = date.addingTimeInterval(600)
             break
-        case Difficulty.hard.rawValue:
+        case Difficulty.easy.rawValue:
             date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
             break
         default:
-            date = date.addingTimeInterval(60)
+            date = date.addingTimeInterval(120)
         }
         var triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
         triggerDate.timeZone = TimeZone.current
